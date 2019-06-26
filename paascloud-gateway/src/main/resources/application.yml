@@ -7,6 +7,6 @@ spring:
   application:
     name: @pom.artifactId@
 
-swagger:
-  title: @pom.artifactId@
-  description: @pom.description@
+#swagger:
+#  title: @pom.artifactId@
+#  description: @pom.description@

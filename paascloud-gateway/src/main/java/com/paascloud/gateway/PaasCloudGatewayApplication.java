@@ -11,10 +11,10 @@
 
 package com.paascloud.gateway;
 
-import com.didispace.swagger.butler.EnableSwaggerButler;
+//import com.didispace.swagger.butler.EnableSwaggerButler;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
+//import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
@@ -31,9 +31,9 @@ import org.springframework.web.filter.CorsFilter;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableZuulProxy
-@EnableOAuth2Sso
-@EnableHystrix
-@EnableSwaggerButler
+//@EnableOAuth2Sso
+//@EnableHystrix
+//@EnableSwaggerButler
 public class PaasCloudGatewayApplication {
 
 	public static void main(String[] args) {

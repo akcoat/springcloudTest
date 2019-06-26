@@ -7,7 +7,8 @@
  * 开源地址: https://github.com/paascloud
  * 博客地址: http://blog.paascloud.net
  * 项目官网: http://paascloud.net
- */
+ *//*
+
 
 package com.paascloud.gateway.fallback;
 
@@ -23,11 +24,13 @@ import org.springframework.stereotype.Component;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
+*/
 /**
  * The class Uac fallback provider.
  *
  * @author paascloud.net@gmail.com
- */
+ *//*
+
 @Component
 @Slf4j
 public class UacFallbackProvider implements FallbackProvider {
@@ -92,3 +95,4 @@ public class UacFallbackProvider implements FallbackProvider {
 		};
 	}
 }
+*/

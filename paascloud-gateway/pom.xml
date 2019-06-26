@@ -23,46 +23,66 @@
     </properties>
 
     <dependencies>
+
+        <!--<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-config</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
         </dependency>
-        <dependency>
+
+
+
+
+        <!--暂时引入，待引入自定义api之后可以删除-->
+           <!-- <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+            </dependency>-->
+
+      <!--  <dependency>
             <groupId>com.liuzm.paascloud.common</groupId>
             <artifactId>paascloud-common-util</artifactId>
         </dependency>
         <dependency>
             <groupId>com.liuzm.paascloud.common</groupId>
             <artifactId>paascloud-common-core</artifactId>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>de.codecentric</groupId>
             <artifactId>spring-boot-admin-starter-client</artifactId>
         </dependency>
-        <dependency>
+       <!-- <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-security</artifactId>
         </dependency>
-
-        <dependency>
+-->
+       <!-- <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-oauth2</artifactId>
         </dependency>
-
+-->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-jwt</artifactId>
         </dependency>
         <!-- swagger2聚合网关 -->
-        <dependency>
+      <!--  <dependency>
             <groupId>com.didispace</groupId>
             <artifactId>swagger-butler-core</artifactId>
             <version>1.1.0</version>
@@ -78,7 +98,7 @@
         <dependency>
             <groupId>net.logstash.logback</groupId>
             <artifactId>logstash-logback-encoder</artifactId>
-        </dependency>
+        </dependency>-->
     </dependencies>
 
     <build>
@@ -115,6 +135,4 @@
             </plugin>
         </plugins>
     </build>
-
-
 </project>

@@ -5,10 +5,6 @@ spring:
       discovery:
         service-id: paascloud-discovery
         enabled: true
-      label: ${spring.profiles.active}
-      profile: ${spring.profiles.active}
-      username: admin
-      password: admin
 
 eureka:
   client:
