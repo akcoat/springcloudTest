@@ -3,12 +3,12 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/paascloud/paascloud-config-repo.git
+          uri: https://github.com/paascloud/paascloud-config-repo.git   # 远程仓库配置文件
           username:
           password:
           search-paths: /*
           default-label: ${spring.profiles.active}
-          basedir: /data/config/paascloud-config-repo
+          basedir: /data/config/paascloud-config-repo  #指定本地配置文件
     inetutils:
       ignoredInterfaces:
         - docker0
