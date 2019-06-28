@@ -5,7 +5,7 @@ spring:
   profiles:
     active: dev
   application:
-    name: @pom.artifactId@
+    name: gateway
 
 #swagger:
 #  title: @pom.artifactId@
