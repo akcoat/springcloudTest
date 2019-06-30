@@ -42,60 +42,58 @@ import javax.annotation.Resource;
 public class UacActionCommonController extends BaseController {
 
 
-	@Resource
-	private UacActionService uacActionService;
+    @Resource
+    private UacActionService uacActionService;
 
-	/**
-	 * 检测权限编码是否已存在
-	 *
-	 * @param uacActionCheckCodeDto the uac action check code dto
-	 *
-	 * @return the wrapper
-	 */
-	@PostMapping(value = "/checkActionCode")
-	@ApiOperation(httpMethod = "POST", value = "检测权限编码是否已存在")
-	public Wrapper<Boolean> checkActionCode(@ApiParam(name = "uacActionCheckCodeDto", value = "id与url") @RequestBody UacActionCheckCodeDto uacActionCheckCodeDto) {
-		logger.info("校验权限编码唯一性 uacActionCheckCodeDto={}", uacActionCheckCodeDto);
+    /**
+     * 检测权限编码是否已存在
+     *
+     * @param uacActionCheckCodeDto the uac action check code dto
+     * @return the wrapper
+     */
+    @PostMapping(value = "/checkActionCode")
+    @ApiOperation(httpMethod = "POST", value = "检测权限编码是否已存在")
+    public Wrapper<Boolean> checkActionCode(@ApiParam(name = "uacActionCheckCodeDto", value = "id与url") @RequestBody UacActionCheckCodeDto uacActionCheckCodeDto) {
+        logger.info("校验权限编码唯一性 uacActionCheckCodeDto={}", uacActionCheckCodeDto);
 
-		Long id = uacActionCheckCodeDto.getActionId();
-		String actionCode = uacActionCheckCodeDto.getActionCode();
+        Long id = uacActionCheckCodeDto.getActionId();
+        String actionCode = uacActionCheckCodeDto.getActionCode();
 
-		Example example = new Example(UacAction.class);
-		Example.Criteria criteria = example.createCriteria();
+        Example example = new Example(UacAction.class);
+        Example.Criteria criteria = example.createCriteria();
 
-		if (id != null) {
-			criteria.andNotEqualTo("id", id);
-		}
-		criteria.andEqualTo("actionCode", actionCode);
+        if (id != null) {
+            criteria.andNotEqualTo("id", id);
+        }
+        criteria.andEqualTo("actionCode", actionCode);
 
-		int result = uacActionService.selectCountByExample(example);
-		return WrapMapper.ok(result < 1);
-	}
+        int result = uacActionService.selectCountByExample(example);
+        return WrapMapper.ok(result < 1);
+    }
 
-	/**
-	 * 检测权限URL唯一性
-	 *
-	 * @param uacActionCheckUrlDto the uac action check url dto
-	 *
-	 * @return the wrapper
-	 */
-	@PostMapping(value = "/checkUrl")
-	@ApiOperation(httpMethod = "POST", value = "检测权限URL唯一性")
-	public Wrapper<Boolean> checkActionUrl(@ApiParam(name = "uacActionCheckUrlDto", value = "id与url") @RequestBody UacActionCheckUrlDto uacActionCheckUrlDto) {
-		logger.info("检测权限URL唯一性 uacActionCheckUrlDto={}", uacActionCheckUrlDto);
+    /**
+     * 检测权限URL唯一性
+     *
+     * @param uacActionCheckUrlDto the uac action check url dto
+     * @return the wrapper
+     */
+    @PostMapping(value = "/checkUrl")
+    @ApiOperation(httpMethod = "POST", value = "检测权限URL唯一性")
+    public Wrapper<Boolean> checkActionUrl(@ApiParam(name = "uacActionCheckUrlDto", value = "id与url") @RequestBody UacActionCheckUrlDto uacActionCheckUrlDto) {
+        logger.info("检测权限URL唯一性 uacActionCheckUrlDto={}", uacActionCheckUrlDto);
 
-		Long id = uacActionCheckUrlDto.getActionId();
-		String url = uacActionCheckUrlDto.getUrl();
+        Long id = uacActionCheckUrlDto.getActionId();
+        String url = uacActionCheckUrlDto.getUrl();
 
-		Example example = new Example(UacAction.class);
-		Example.Criteria criteria = example.createCriteria();
+        Example example = new Example(UacAction.class);
+        Example.Criteria criteria = example.createCriteria();
 
-		if (id != null) {
-			criteria.andNotEqualTo("id", id);
-		}
-		criteria.andEqualTo("url", url);
+        if (id != null) {
+            criteria.andNotEqualTo("id", id);
+        }
+        criteria.andEqualTo("url", url);
 
-		int result = uacActionService.selectCountByExample(example);
-		return WrapMapper.ok(result < 1);
-	}
+        int result = uacActionService.selectCountByExample(example);
+        return WrapMapper.ok(result < 1);
+    }
 }

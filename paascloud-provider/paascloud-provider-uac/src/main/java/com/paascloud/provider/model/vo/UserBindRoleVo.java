@@ -28,16 +28,16 @@ import java.util.Set;
 @ApiModel(value = "角色绑定用户")
 public class UserBindRoleVo implements Serializable {
 
-	private static final long serialVersionUID = -2521583668470612548L;
-	/**
-	 * 未绑定的用户集合
-	 */
-	@ApiModelProperty(value = "所有用户集合")
-	private Set<BindRoleDto> allRoleSet;
+    private static final long serialVersionUID = -2521583668470612548L;
+    /**
+     * 未绑定的用户集合
+     */
+    @ApiModelProperty(value = "所有用户集合")
+    private Set<BindRoleDto> allRoleSet;
 
-	/**
-	 * 已经绑定的用户集合
-	 */
-	@ApiModelProperty(value = "已经绑定的用户集合")
-	private Set<Long> alreadyBindRoleIdSet;
+    /**
+     * 已经绑定的用户集合
+     */
+    @ApiModelProperty(value = "已经绑定的用户集合")
+    private Set<Long> alreadyBindRoleIdSet;
 }

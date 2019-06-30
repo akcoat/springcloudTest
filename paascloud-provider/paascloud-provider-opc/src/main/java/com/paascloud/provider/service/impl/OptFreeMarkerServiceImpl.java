@@ -32,13 +32,13 @@ import java.util.Map;
 @Service
 public class OptFreeMarkerServiceImpl implements OptFreeMarkerService {
 
-	@Resource
-	private Configuration configuration;
+    @Resource
+    private Configuration configuration;
 
-	@Override
-	public String getTemplate(Map<String, Object> map, String templateLocation) throws IOException, TemplateException {
-		Preconditions.checkArgument(PublicUtil.isNotEmpty(templateLocation), "模板不能为空");
-		Template t = configuration.getTemplate(templateLocation, "UTF-8");
-		return FreeMarkerTemplateUtils.processTemplateIntoString(t, map);
-	}
+    @Override
+    public String getTemplate(Map<String, Object> map, String templateLocation) throws IOException, TemplateException {
+        Preconditions.checkArgument(PublicUtil.isNotEmpty(templateLocation), "模板不能为空");
+        Template t = configuration.getTemplate(templateLocation, "UTF-8");
+        return FreeMarkerTemplateUtils.processTemplateIntoString(t, map);
+    }
 }

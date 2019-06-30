@@ -33,27 +33,27 @@ import javax.annotation.Resource;
 @ElasticJobConfig(cron = "0 0 1 1/1 * ?")
 public class DeleteRpcProducerMessageJob implements SimpleJob {
 
-	@Resource
-	private PaascloudProperties paascloudProperties;
-	@Resource
-	private TpcMqMessageService tpcMqMessageService;
+    @Resource
+    private PaascloudProperties paascloudProperties;
+    @Resource
+    private TpcMqMessageService tpcMqMessageService;
 
-	/**
-	 * Execute.
-	 *
-	 * @param shardingContext the sharding context
-	 */
-	@Override
-	public void execute(final ShardingContext shardingContext) {
+    /**
+     * Execute.
+     *
+     * @param shardingContext the sharding context
+     */
+    @Override
+    public void execute(final ShardingContext shardingContext) {
 
-		final TpcMqMessageDto message = new TpcMqMessageDto();
-		message.setMessageBody(JSON.toJSONString(shardingContext));
-		message.setMessageTag(AliyunMqTopicConstants.MqTagEnum.DELETE_PRODUCER_MESSAGE.getTag());
-		message.setMessageTopic(AliyunMqTopicConstants.MqTopicEnum.TPC_TOPIC.getTopic());
-		message.setProducerGroup(paascloudProperties.getAliyun().getRocketMq().getProducerGroup());
-		String refNo = Long.toString(UniqueIdGenerator.generateId());
-		message.setRefNo(refNo);
-		message.setMessageKey(refNo);
-		tpcMqMessageService.saveAndSendMessage(message);
-	}
+        final TpcMqMessageDto message = new TpcMqMessageDto();
+        message.setMessageBody(JSON.toJSONString(shardingContext));
+        message.setMessageTag(AliyunMqTopicConstants.MqTagEnum.DELETE_PRODUCER_MESSAGE.getTag());
+        message.setMessageTopic(AliyunMqTopicConstants.MqTopicEnum.TPC_TOPIC.getTopic());
+        message.setProducerGroup(paascloudProperties.getAliyun().getRocketMq().getProducerGroup());
+        String refNo = Long.toString(UniqueIdGenerator.generateId());
+        message.setRefNo(refNo);
+        message.setMessageKey(refNo);
+        tpcMqMessageService.saveAndSendMessage(message);
+    }
 }

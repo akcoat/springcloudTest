@@ -33,38 +33,37 @@ import javax.annotation.Resource;
 @Component
 public class OpcRpcService {
 
-	@Resource
-	private DingtalkFeignApi dingtalkFeignApi;
-	@Resource
-	private OpcOssFeignApi opcOssFeignApi;
-	@Resource
-	private OpcMqMessageFeignApi opcMqMessageFeignApi;
+    @Resource
+    private DingtalkFeignApi dingtalkFeignApi;
+    @Resource
+    private OpcOssFeignApi opcOssFeignApi;
+    @Resource
+    private OpcMqMessageFeignApi opcMqMessageFeignApi;
 
-	/**
-	 * Send chat robot msg boolean.
-	 *
-	 * @param chatRobotMsgDto the chat robot msg dto
-	 *
-	 * @return the boolean
-	 */
-	public boolean sendChatRobotMsg(ChatRobotMsgDto chatRobotMsgDto) {
-		Wrapper<Boolean> result = dingtalkFeignApi.sendChatRobotMsg(chatRobotMsgDto);
-		return result.getResult();
-	}
+    /**
+     * Send chat robot msg boolean.
+     *
+     * @param chatRobotMsgDto the chat robot msg dto
+     * @return the boolean
+     */
+    public boolean sendChatRobotMsg(ChatRobotMsgDto chatRobotMsgDto) {
+        Wrapper<Boolean> result = dingtalkFeignApi.sendChatRobotMsg(chatRobotMsgDto);
+        return result.getResult();
+    }
 
-	/**
-	 * Delete expire file.
-	 */
-	public void deleteExpireFile() {
-		opcOssFeignApi.deleteExpireFile();
-	}
+    /**
+     * Delete expire file.
+     */
+    public void deleteExpireFile() {
+        opcOssFeignApi.deleteExpireFile();
+    }
 
-	public Wrapper<PageInfo<MqMessageVo>> queryMessageListWithPage(final MessageQueryDto messageQueryDto) {
-		Wrapper<PageInfo<MqMessageVo>> wrapper = opcMqMessageFeignApi.queryMessageListWithPage(messageQueryDto);
-		if (wrapper == null) {
-			log.error("查询消息记录 失败 result is null");
-			throw new TpcBizException(ErrorCodeEnum.GL99990002);
-		}
-		return wrapper;
-	}
+    public Wrapper<PageInfo<MqMessageVo>> queryMessageListWithPage(final MessageQueryDto messageQueryDto) {
+        Wrapper<PageInfo<MqMessageVo>> wrapper = opcMqMessageFeignApi.queryMessageListWithPage(messageQueryDto);
+        if (wrapper == null) {
+            log.error("查询消息记录 失败 result is null");
+            throw new TpcBizException(ErrorCodeEnum.GL99990002);
+        }
+        return wrapper;
+    }
 }

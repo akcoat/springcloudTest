@@ -37,40 +37,38 @@ import javax.annotation.Resource;
 @Api(value = "Web - UacRoleBindUserController", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class UacRoleBindUserController extends BaseController {
 
-	@Resource
-	private UacRoleService uacRoleService;
+    @Resource
+    private UacRoleService uacRoleService;
 
-	/**
-	 * 角色绑定用户.
-	 *
-	 * @param roleBindUserReqDto the role bind user req dto
-	 *
-	 * @return the wrapper
-	 */
-	@LogAnnotation
-	@PostMapping(value = "/bindUser")
-	@ApiOperation(httpMethod = "POST", value = "角色绑定用户")
-	public Wrapper bindUser(@ApiParam(name = "uacRoleBindUserReqDto", value = "角色绑定用户") @RequestBody RoleBindUserReqDto roleBindUserReqDto) {
-		logger.info("roleBindUser={}", roleBindUserReqDto);
-		LoginAuthDto loginAuthDto = getLoginAuthDto();
-		uacRoleService.bindUser4Role(roleBindUserReqDto, loginAuthDto);
-		return WrapMapper.ok();
-	}
+    /**
+     * 角色绑定用户.
+     *
+     * @param roleBindUserReqDto the role bind user req dto
+     * @return the wrapper
+     */
+    @LogAnnotation
+    @PostMapping(value = "/bindUser")
+    @ApiOperation(httpMethod = "POST", value = "角色绑定用户")
+    public Wrapper bindUser(@ApiParam(name = "uacRoleBindUserReqDto", value = "角色绑定用户") @RequestBody RoleBindUserReqDto roleBindUserReqDto) {
+        logger.info("roleBindUser={}", roleBindUserReqDto);
+        LoginAuthDto loginAuthDto = getLoginAuthDto();
+        uacRoleService.bindUser4Role(roleBindUserReqDto, loginAuthDto);
+        return WrapMapper.ok();
+    }
 
-	/**
-	 * 获取角色绑定用户页面数据.
-	 *
-	 * @param roleId the role id
-	 *
-	 * @return the wrapper
-	 */
-	@PostMapping(value = "/getBindUser/{roleId}")
-	@ApiOperation(httpMethod = "POST", value = "获取角色绑定用户页面数据")
-	public Wrapper<RoleBindUserDto> getBindUser(@ApiParam(name = "roleId", value = "角色id") @PathVariable Long roleId) {
-		logger.info("获取角色绑定用户页面数据. roleId={}", roleId);
-		LoginAuthDto loginAuthDto = super.getLoginAuthDto();
-		Long currentUserId = loginAuthDto.getUserId();
-		RoleBindUserDto bindUserDto = uacRoleService.getRoleBindUserDto(roleId, currentUserId);
-		return WrapMapper.ok(bindUserDto);
-	}
+    /**
+     * 获取角色绑定用户页面数据.
+     *
+     * @param roleId the role id
+     * @return the wrapper
+     */
+    @PostMapping(value = "/getBindUser/{roleId}")
+    @ApiOperation(httpMethod = "POST", value = "获取角色绑定用户页面数据")
+    public Wrapper<RoleBindUserDto> getBindUser(@ApiParam(name = "roleId", value = "角色id") @PathVariable Long roleId) {
+        logger.info("获取角色绑定用户页面数据. roleId={}", roleId);
+        LoginAuthDto loginAuthDto = super.getLoginAuthDto();
+        Long currentUserId = loginAuthDto.getUserId();
+        RoleBindUserDto bindUserDto = uacRoleService.getRoleBindUserDto(roleId, currentUserId);
+        return WrapMapper.ok(bindUserDto);
+    }
 }

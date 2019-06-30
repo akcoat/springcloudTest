@@ -26,23 +26,23 @@ import java.io.Serializable;
 @ApiModel(value = "OptAttachmentReqDto")
 public class OptAttachmentReqDto implements Serializable {
 
-	private static final long serialVersionUID = -1727131719075160349L;
-	/**
-	 * 主键
-	 */
-	@ApiModelProperty(value = "主键")
-	private Long id;
+    private static final long serialVersionUID = -1727131719075160349L;
+    /**
+     * 主键
+     */
+    @ApiModelProperty(value = "主键")
+    private Long id;
 
-	/**
-	 * 附件流水号
-	 */
-	@ApiModelProperty(value = "附件流水号")
-	private String serialNo;
+    /**
+     * 附件流水号
+     */
+    @ApiModelProperty(value = "附件流水号")
+    private String serialNo;
 
-	/**
-	 * 上传附件的相关业务流水号
-	 */
-	@ApiModelProperty(value = "上传附件的相关业务流水号")
-	private String refNo;
+    /**
+     * 上传附件的相关业务流水号
+     */
+    @ApiModelProperty(value = "上传附件的相关业务流水号")
+    private String refNo;
 
 }

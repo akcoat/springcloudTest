@@ -14,6 +14,6 @@ import java.util.List;
  */
 @Data
 public class CartListQuery implements Serializable {
-	private static final long serialVersionUID = -5968284112162772265L;
-	private List<CartProductVo> cartProductVoList;
+    private static final long serialVersionUID = -5968284112162772265L;
+    private List<CartProductVo> cartProductVoList;
 }

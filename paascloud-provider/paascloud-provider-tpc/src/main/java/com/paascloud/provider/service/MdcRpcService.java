@@ -31,15 +31,15 @@ import javax.annotation.Resource;
 @Slf4j
 @Service
 public class MdcRpcService {
-	@Resource
-	private MdcMqMessageFeignApi mdcMqMessageFeignApi;
+    @Resource
+    private MdcMqMessageFeignApi mdcMqMessageFeignApi;
 
-	public Wrapper<PageInfo<MqMessageVo>> queryMessageListWithPage(final MessageQueryDto messageQueryDto) {
-		Wrapper<PageInfo<MqMessageVo>> wrapper = mdcMqMessageFeignApi.queryMessageListWithPage(messageQueryDto);
-		if (wrapper == null) {
-			log.error("查询消息记录. 失败 result is null");
-			throw new TpcBizException(ErrorCodeEnum.GL99990002);
-		}
-		return wrapper;
-	}
+    public Wrapper<PageInfo<MqMessageVo>> queryMessageListWithPage(final MessageQueryDto messageQueryDto) {
+        Wrapper<PageInfo<MqMessageVo>> wrapper = mdcMqMessageFeignApi.queryMessageListWithPage(messageQueryDto);
+        if (wrapper == null) {
+            log.error("查询消息记录. 失败 result is null");
+            throw new TpcBizException(ErrorCodeEnum.GL99990002);
+        }
+        return wrapper;
+    }
 }

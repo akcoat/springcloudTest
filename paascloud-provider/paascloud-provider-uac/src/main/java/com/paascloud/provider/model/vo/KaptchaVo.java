@@ -22,7 +22,7 @@ import lombok.Data;
 @Data
 @Api
 public class KaptchaVo {
-	private String cookieCode;
-	private String base64Code;
-	private String kaptchaCode;
+    private String cookieCode;
+    private String base64Code;
+    private String kaptchaCode;
 }

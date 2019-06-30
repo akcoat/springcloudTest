@@ -39,24 +39,24 @@ import java.util.List;
 @RestController
 @Api(value = "API - MallCartQueryFeignClient", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class OmcOrderDetailQueryFeignClient extends BaseController implements OmcOrderDetailQueryFeignApi {
-	@Resource
-	private OmcOrderDetailService omcOrderDetailService;
+    @Resource
+    private OmcOrderDetailService omcOrderDetailService;
 
-	@Override
-	@ApiOperation(httpMethod = "POST", value = "获取用户订单详情")
-	public Wrapper<List<OrderDetailDto>> getListByOrderNoUserId(@PathVariable("orderNo") String orderNo, @PathVariable("userId") Long userId) {
-		logger.info("getListByOrderNoUserId - 获取用户订单详情. orderNo={}, userId={}", orderNo, userId);
-		List<OmcOrderDetail> list = omcOrderDetailService.getListByOrderNoUserId(orderNo, userId);
+    @Override
+    @ApiOperation(httpMethod = "POST", value = "获取用户订单详情")
+    public Wrapper<List<OrderDetailDto>> getListByOrderNoUserId(@PathVariable("orderNo") String orderNo, @PathVariable("userId") Long userId) {
+        logger.info("getListByOrderNoUserId - 获取用户订单详情. orderNo={}, userId={}", orderNo, userId);
+        List<OmcOrderDetail> list = omcOrderDetailService.getListByOrderNoUserId(orderNo, userId);
 
-		List<OrderDetailDto> orderDetailDtoList = Lists.newArrayList();
+        List<OrderDetailDto> orderDetailDtoList = Lists.newArrayList();
 
-		for (OmcOrderDetail orderDetail : list) {
+        for (OmcOrderDetail orderDetail : list) {
 
-			OrderDetailDto orderDetailDto = new OrderDetailDto();
-			BeanUtils.copyProperties(orderDetail, orderDetailDto);
-			orderDetailDtoList.add(orderDetailDto);
-		}
+            OrderDetailDto orderDetailDto = new OrderDetailDto();
+            BeanUtils.copyProperties(orderDetail, orderDetailDto);
+            orderDetailDtoList.add(orderDetailDto);
+        }
 
-		return WrapMapper.ok(orderDetailDtoList);
-	}
+        return WrapMapper.ok(orderDetailDtoList);
+    }
 }

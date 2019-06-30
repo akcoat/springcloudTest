@@ -17,12 +17,12 @@ import java.io.Serializable;
 @Table(name = "pc_uac_role_menu")
 @Alias(value = "uacRoleMenu")
 public class UacRoleMenu implements Serializable {
-	private static final long serialVersionUID = -9052683954152822756L;
-	@Id
-	@Column(name = "role_id")
-	private Long roleId;
+    private static final long serialVersionUID = -9052683954152822756L;
+    @Id
+    @Column(name = "role_id")
+    private Long roleId;
 
-	@Id
-	@Column(name = "menu_id")
-	private Long menuId;
+    @Id
+    @Column(name = "menu_id")
+    private Long menuId;
 }

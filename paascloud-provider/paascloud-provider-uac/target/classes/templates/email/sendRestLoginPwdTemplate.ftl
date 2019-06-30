@@ -1,14 +1,14 @@
 <html>
 <body>
-    <h3>尊敬的,  ${loginName}, 您好!</h3>
+<h3>尊敬的, ${loginName}, 您好!</h3>
 
-    点击下面按钮以验证你的电子邮箱
+点击下面按钮以验证你的电子邮箱
 
-    <a href="${resetPwdUrl}">重置密码</a>
+<a href="${resetPwdUrl}">重置密码</a>
 
-    如果你无法通过上面按钮验证电子邮箱，请点击下面的链接或者把它复制到浏览器地址栏。
+如果你无法通过上面按钮验证电子邮箱，请点击下面的链接或者把它复制到浏览器地址栏。
 
-    ${resetPwdUrl}
+${resetPwdUrl}
 
 
     如果你没有请求重置密码，请忽略这封邮件.
@@ -20,7 +20,7 @@
     如果您有任何问题或建议, 请发送邮件到：paascloud.net@gmail.com
 
     paascloud.net
-    ${dateTime}
+${dateTime}
 
 </body>
 </html>

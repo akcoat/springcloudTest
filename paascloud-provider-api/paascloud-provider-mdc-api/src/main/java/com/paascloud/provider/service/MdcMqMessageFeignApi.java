@@ -33,7 +33,6 @@ import java.util.List;
 @FeignClient(value = "paascloud-provider-mdc", configuration = OAuth2FeignAutoConfiguration.class, fallback = MdcMqMessageApiHystrix.class)
 public interface MdcMqMessageFeignApi {
 
-
 	/**
 	 * Query waiting confirm message list wrapper.
 	 *

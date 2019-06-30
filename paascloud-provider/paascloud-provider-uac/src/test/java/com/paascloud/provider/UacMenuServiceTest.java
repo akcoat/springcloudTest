@@ -8,12 +8,12 @@ import javax.annotation.Resource;
 import java.util.List;
 
 public class UacMenuServiceTest extends PaasCloudUacApplicationTests {
-	@Resource
-	private UacMenuService uacMenuService;
+    @Resource
+    private UacMenuService uacMenuService;
 
-	@Test
-	public void findMenuListByUserIdTest() {
-		List<MenuVo> menuVoListByUserId = uacMenuService.getMenuVoList(1L, 1L);
-		logger.info("findByLoginNameTest = {}", menuVoListByUserId);
-	}
+    @Test
+    public void findMenuListByUserIdTest() {
+        List<MenuVo> menuVoListByUserId = uacMenuService.getMenuVoList(1L, 1L);
+        logger.info("findByLoginNameTest = {}", menuVoListByUserId);
+    }
 }

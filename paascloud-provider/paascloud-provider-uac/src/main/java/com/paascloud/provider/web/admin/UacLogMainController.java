@@ -37,21 +37,20 @@ import javax.annotation.Resource;
 @RequestMapping(value = "/log", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 @Api(value = "Web - UacLogMainController", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class UacLogMainController extends BaseController {
-	@Resource
-	private UacLogService uacLogService;
+    @Resource
+    private UacLogService uacLogService;
 
-	/**
-	 * 查询日志列表.
-	 *
-	 * @param uacLogQueryDtoPage the uac log query dto page
-	 *
-	 * @return the wrapper
-	 */
-	@PostMapping(value = "/queryListWithPage")
-	@ApiOperation(httpMethod = "POST", value = "查询日志列表")
-	public Wrapper queryLogListWithPage(@ApiParam(name = "uacLogQueryDtoPage", value = "日志查询条件") @RequestBody UacLogMainDto uacLogQueryDtoPage) {
-		logger.info("查询日志处理列表 uacLogQueryDtoPage={}", uacLogQueryDtoPage);
-		PageInfo pageInfo = uacLogService.queryLogListWithPage(uacLogQueryDtoPage);
-		return WrapMapper.ok(pageInfo);
-	}
+    /**
+     * 查询日志列表.
+     *
+     * @param uacLogQueryDtoPage the uac log query dto page
+     * @return the wrapper
+     */
+    @PostMapping(value = "/queryListWithPage")
+    @ApiOperation(httpMethod = "POST", value = "查询日志列表")
+    public Wrapper queryLogListWithPage(@ApiParam(name = "uacLogQueryDtoPage", value = "日志查询条件") @RequestBody UacLogMainDto uacLogQueryDtoPage) {
+        logger.info("查询日志处理列表 uacLogQueryDtoPage={}", uacLogQueryDtoPage);
+        PageInfo pageInfo = uacLogService.queryLogListWithPage(uacLogQueryDtoPage);
+        return WrapMapper.ok(pageInfo);
+    }
 }

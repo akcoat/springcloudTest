@@ -27,13 +27,13 @@ import java.io.Serializable;
 public class UacMenuUrlDto implements Serializable {
 
 
-	private static final long serialVersionUID = 456904676277011675L;
-	@ApiModelProperty(value = "系统Id", required = true)
-	private String systemId;
+    private static final long serialVersionUID = 456904676277011675L;
+    @ApiModelProperty(value = "系统Id", required = true)
+    private String systemId;
 
-	@ApiModelProperty(value = "用户ID", required = true)
-	private Long userId;
+    @ApiModelProperty(value = "用户ID", required = true)
+    private Long userId;
 
-	@ApiModelProperty(value = "url", required = true)
-	private String url;
+    @ApiModelProperty(value = "url", required = true)
+    private String url;
 }

@@ -37,35 +37,35 @@ import javax.sql.DataSource;
 @EnableTransactionManagement
 public class PaasCloudUacApplication {
 
-	/**
-	 * The entry point of application.
-	 *
-	 * @param args the input arguments
-	 */
-	public static void main(String[] args) {
-		SpringApplication.run(PaasCloudUacApplication.class, args);
-	}
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
+    public static void main(String[] args) {
+        SpringApplication.run(PaasCloudUacApplication.class, args);
+    }
 
-	@Bean
-	public SpringLiquibase springLiquibase(DataSource dataSource) {
+    @Bean
+    public SpringLiquibase springLiquibase(DataSource dataSource) {
 
-		SpringLiquibase springLiquibase = new SpringLiquibase();
+        SpringLiquibase springLiquibase = new SpringLiquibase();
 
-		springLiquibase.setDataSource(dataSource);
-		springLiquibase.setChangeLog("classpath:/liquibase/index.xml");
+        springLiquibase.setDataSource(dataSource);
+        springLiquibase.setChangeLog("classpath:/liquibase/index.xml");
 
-		return springLiquibase;
-	}
+        return springLiquibase;
+    }
 
-	@Bean
-	public ReloadableResourceBundleMessageSource messageSource() {
-		ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
-		messageSource.setBasename("classpath:org/springframework/security/messages_zh_CN");
-		return messageSource;
-	}
+    @Bean
+    public ReloadableResourceBundleMessageSource messageSource() {
+        ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
+        messageSource.setBasename("classpath:org/springframework/security/messages_zh_CN");
+        return messageSource;
+    }
 
-	@Bean
-	public SmsCodeSender smsCodeSender() {
-		return new PcSmsCodeSender();
-	}
+    @Bean
+    public SmsCodeSender smsCodeSender() {
+        return new PcSmsCodeSender();
+    }
 }

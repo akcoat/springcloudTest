@@ -37,17 +37,17 @@ import javax.annotation.Resource;
 @RestController
 @Api(value = "API - MdcExceptionLogFeignClient", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class MdcExceptionLogFeignClient extends BaseController implements MdcExceptionLogFeignApi {
-	@Resource
-	private MdcExceptionLogService mdcExceptionLogService;
+    @Resource
+    private MdcExceptionLogService mdcExceptionLogService;
 
-	@Override
-	@ApiOperation(httpMethod = "POST", value = "保存日志并发送钉钉消息")
-	public Wrapper saveAndSendExceptionLog(@RequestBody GlobalExceptionLogDto exceptionLogDto) {
-		try {
-			mdcExceptionLogService.saveAndSendExceptionLog(exceptionLogDto);
-		} catch (Exception e) {
-			log.error("saveAndSendExceptionLog={}", e.getMessage(), e);
-		}
-		return WrapMapper.ok();
-	}
+    @Override
+    @ApiOperation(httpMethod = "POST", value = "保存日志并发送钉钉消息")
+    public Wrapper saveAndSendExceptionLog(@RequestBody GlobalExceptionLogDto exceptionLogDto) {
+        try {
+            mdcExceptionLogService.saveAndSendExceptionLog(exceptionLogDto);
+        } catch (Exception e) {
+            log.error("saveAndSendExceptionLog={}", e.getMessage(), e);
+        }
+        return WrapMapper.ok();
+    }
 }

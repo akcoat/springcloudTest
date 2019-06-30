@@ -15,18 +15,18 @@ import java.io.Serializable;
 @Data
 @ApiModel(value = "UacMenuCheckUrlDto")
 public class UacMenuCheckUrlDto implements Serializable {
-	private static final long serialVersionUID = 839437721293973234L;
-	/**
-	 * 菜单的id
-	 */
-	@ApiModelProperty(value = "菜单的id")
-	private Long menuId;
-	/**
-	 * 菜单的url
-	 */
-	@ApiModelProperty(value = "菜单地址")
-	@NotBlank(message = "菜单地址不能为空")
-	private String url;
+    private static final long serialVersionUID = 839437721293973234L;
+    /**
+     * 菜单的id
+     */
+    @ApiModelProperty(value = "菜单的id")
+    private Long menuId;
+    /**
+     * 菜单的url
+     */
+    @ApiModelProperty(value = "菜单地址")
+    @NotBlank(message = "菜单地址不能为空")
+    private String url;
 
 
 }

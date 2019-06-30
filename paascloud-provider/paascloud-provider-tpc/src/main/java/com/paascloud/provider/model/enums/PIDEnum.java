@@ -18,16 +18,17 @@ package com.paascloud.provider.model.enums;
  * @author paascloud.net @gmail.com
  */
 public enum PIDEnum {
-	/**
-	 * Pid uac pid enum.
-	 */
-	PID_UAC,
-	/**
-	 * Pid mdc pid enum.
-	 */
-	PID_MDC,
-	/**
-	 * Pid opc pid enum.
-	 */
-	PID_OPC,;
+    /**
+     * Pid uac pid enum.
+     */
+    PID_UAC,
+    /**
+     * Pid mdc pid enum.
+     */
+    PID_MDC,
+    /**
+     * Pid opc pid enum.
+     */
+    PID_OPC,
+    ;
 }

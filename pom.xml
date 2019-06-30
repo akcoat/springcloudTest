@@ -14,7 +14,9 @@
     <module>paascloud-gateway</module>
     <module>paascloud-provider-api</module>
     <module>paascloud-common</module>
-    <module>paascloud-provider</module>
+      <module>springcloud_provider</module>
+      <module>springcloud_provider_feignTest</module>
+      <!-- <module>paascloud-provider</module>-->
    <!-- <module>paascloud-generator</module>-->
   </modules>
 

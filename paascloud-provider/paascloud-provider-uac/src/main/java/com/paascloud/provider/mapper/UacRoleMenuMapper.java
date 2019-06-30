@@ -28,31 +28,28 @@ import java.util.List;
 @Mapper
 @Component
 public interface UacRoleMenuMapper extends MyMapper<UacRoleMenu> {
-	/**
-	 * Count child menu num list.
-	 *
-	 * @param roleId the role id
-	 *
-	 * @return the list
-	 */
-	List<MenuCountVo> countChildMenuNum(Long roleId);
+    /**
+     * Count child menu num list.
+     *
+     * @param roleId the role id
+     * @return the list
+     */
+    List<MenuCountVo> countChildMenuNum(Long roleId);
 
-	/**
-	 * Add role menu list int.
-	 *
-	 * @param addUacRoleMenuList the add uac role menu list
-	 *
-	 * @return the int
-	 */
-	int addRoleMenuList(List<UacRoleMenu> addUacRoleMenuList);
+    /**
+     * Add role menu list int.
+     *
+     * @param addUacRoleMenuList the add uac role menu list
+     * @return the int
+     */
+    int addRoleMenuList(List<UacRoleMenu> addUacRoleMenuList);
 
 
-	/**
-	 * Delete by role id list int.
-	 *
-	 * @param roleIdList the role id list
-	 *
-	 * @return the int
-	 */
-	int deleteByRoleIdList(@Param("roleIdList") List<Long> roleIdList);
+    /**
+     * Delete by role id list int.
+     *
+     * @param roleIdList the role id list
+     * @return the int
+     */
+    int deleteByRoleIdList(@Param("roleIdList") List<Long> roleIdList);
 }

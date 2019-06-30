@@ -16,17 +16,17 @@ import javax.annotation.Resource;
  */
 @Slf4j
 public class PcSmsCodeSender implements SmsCodeSender {
-	@Resource
-	private SmsService smsService;
+    @Resource
+    private SmsService smsService;
 
-	@Override
-	public void send(String mobile, String code, String ip) {
-		log.info("ip地址:{}向手机: {}发送短信验证码:{}", ip, mobile, code);
-		SmsMessage smsMessage = new SmsMessage();
-		smsMessage.setMobileNo(mobile);
-		smsMessage.setSmsCode(code);
-		smsMessage.setSmsTemplateCode(AliyunSmsConstants.SmsTempletEnum.UAC_PC_GLOBAL_TEMPLATE.getTempletCode());
-		smsService.sendSmsCode(smsMessage, ip);
-	}
+    @Override
+    public void send(String mobile, String code, String ip) {
+        log.info("ip地址:{}向手机: {}发送短信验证码:{}", ip, mobile, code);
+        SmsMessage smsMessage = new SmsMessage();
+        smsMessage.setMobileNo(mobile);
+        smsMessage.setSmsCode(code);
+        smsMessage.setSmsTemplateCode(AliyunSmsConstants.SmsTempletEnum.UAC_PC_GLOBAL_TEMPLATE.getTempletCode());
+        smsService.sendSmsCode(smsMessage, ip);
+    }
 
 }

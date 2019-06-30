@@ -20,12 +20,11 @@ import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
  * @author paascloud.net@gmail.com
  */
 public interface OptSmsService {
-	/**
-	 * Send sms send sms response.
-	 *
-	 * @param sendSmsRequest the send sms request
-	 *
-	 * @return the send sms response
-	 */
-	SendSmsResponse sendSms(SendSmsRequest sendSmsRequest);
+    /**
+     * Send sms send sms response.
+     *
+     * @param sendSmsRequest the send sms request
+     * @return the send sms response
+     */
+    SendSmsResponse sendSms(SendSmsRequest sendSmsRequest);
 }

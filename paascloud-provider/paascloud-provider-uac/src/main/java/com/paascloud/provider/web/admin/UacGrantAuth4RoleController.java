@@ -40,38 +40,36 @@ import javax.annotation.Resource;
 @Api(value = "Web - UacGrantAuth4RoleController", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class UacGrantAuth4RoleController extends BaseController {
 
-	@Resource
-	private UacRoleService uacRoleService;
+    @Resource
+    private UacRoleService uacRoleService;
 
-	/**
-	 * 角色分配权限.
-	 *
-	 * @param roleBindActionDto the role bind action dto
-	 *
-	 * @return the wrapper
-	 */
-	@PostMapping(value = "/bindAction")
-	@ApiOperation(httpMethod = "POST", value = "角色分配权限")
-	@LogAnnotation
-	public Wrapper bindAction(@ApiParam(name = "bindAuth", value = "权限信息") @RequestBody RoleBindActionDto roleBindActionDto) {
-		logger.info("角色分配权限. roleBindActionDto= {}", roleBindActionDto);
-		uacRoleService.bindAction(roleBindActionDto);
-		return WrapMapper.ok();
-	}
+    /**
+     * 角色分配权限.
+     *
+     * @param roleBindActionDto the role bind action dto
+     * @return the wrapper
+     */
+    @PostMapping(value = "/bindAction")
+    @ApiOperation(httpMethod = "POST", value = "角色分配权限")
+    @LogAnnotation
+    public Wrapper bindAction(@ApiParam(name = "bindAuth", value = "权限信息") @RequestBody RoleBindActionDto roleBindActionDto) {
+        logger.info("角色分配权限. roleBindActionDto= {}", roleBindActionDto);
+        uacRoleService.bindAction(roleBindActionDto);
+        return WrapMapper.ok();
+    }
 
-	/**
-	 * 角色分配权限.
-	 *
-	 * @param roleBindMenuDto the role bind menu dto
-	 *
-	 * @return the wrapper
-	 */
-	@PostMapping(value = "/bindMenu")
-	@ApiOperation(httpMethod = "POST", value = "角色分配权限")
-	@LogAnnotation
-	public Wrapper bindMenu(@ApiParam(name = "bindAuth", value = "权限信息") @RequestBody RoleBindMenuDto roleBindMenuDto) {
-		logger.info("角色分配权限. roleBindMenuDto= {}", roleBindMenuDto);
-		uacRoleService.bindMenu(roleBindMenuDto);
-		return WrapMapper.ok();
-	}
+    /**
+     * 角色分配权限.
+     *
+     * @param roleBindMenuDto the role bind menu dto
+     * @return the wrapper
+     */
+    @PostMapping(value = "/bindMenu")
+    @ApiOperation(httpMethod = "POST", value = "角色分配权限")
+    @LogAnnotation
+    public Wrapper bindMenu(@ApiParam(name = "bindAuth", value = "权限信息") @RequestBody RoleBindMenuDto roleBindMenuDto) {
+        logger.info("角色分配权限. roleBindMenuDto= {}", roleBindMenuDto);
+        uacRoleService.bindMenu(roleBindMenuDto);
+        return WrapMapper.ok();
+    }
 }

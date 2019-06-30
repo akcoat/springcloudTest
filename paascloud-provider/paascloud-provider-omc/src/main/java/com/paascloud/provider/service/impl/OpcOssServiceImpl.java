@@ -32,26 +32,26 @@ import javax.annotation.Resource;
 @Slf4j
 @Service
 public class OpcOssServiceImpl implements OpcOssService {
-	@Resource
-	private OpcOssFeignApi opcOssFeignApi;
+    @Resource
+    private OpcOssFeignApi opcOssFeignApi;
 
-	@Override
-	public OptUploadFileRespDto uploadFile(OptUploadFileReqDto optUploadFileReqDto) {
-		log.info("uploadFile - 上传附件. optUploadFileReqDto={}", optUploadFileReqDto);
-		Wrapper<OptUploadFileRespDto> wrapper = opcOssFeignApi.uploadFile(optUploadFileReqDto);
-		if (null == wrapper || wrapper.error()) {
-			throw new OmcBizException(ErrorCodeEnum.OMC10031012);
-		}
-		return wrapper.getResult();
-	}
+    @Override
+    public OptUploadFileRespDto uploadFile(OptUploadFileReqDto optUploadFileReqDto) {
+        log.info("uploadFile - 上传附件. optUploadFileReqDto={}", optUploadFileReqDto);
+        Wrapper<OptUploadFileRespDto> wrapper = opcOssFeignApi.uploadFile(optUploadFileReqDto);
+        if (null == wrapper || wrapper.error()) {
+            throw new OmcBizException(ErrorCodeEnum.OMC10031012);
+        }
+        return wrapper.getResult();
+    }
 
-	@Override
-	public String getFileUrl(OptGetUrlRequest optGetUrlRequest) {
-		log.info("getFileUrl - 获取附件地址. optUploadFileReqDto={}", optGetUrlRequest);
-		Wrapper<String> wrapper = opcOssFeignApi.getFileUrl(optGetUrlRequest);
-		if (null == wrapper || wrapper.error()) {
-			throw new OmcBizException(ErrorCodeEnum.OMC10031013);
-		}
-		return wrapper.getResult();
-	}
+    @Override
+    public String getFileUrl(OptGetUrlRequest optGetUrlRequest) {
+        log.info("getFileUrl - 获取附件地址. optUploadFileReqDto={}", optGetUrlRequest);
+        Wrapper<String> wrapper = opcOssFeignApi.getFileUrl(optGetUrlRequest);
+        if (null == wrapper || wrapper.error()) {
+            throw new OmcBizException(ErrorCodeEnum.OMC10031013);
+        }
+        return wrapper.getResult();
+    }
 }

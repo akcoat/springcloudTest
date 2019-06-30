@@ -31,28 +31,28 @@ import java.util.List;
  */
 @Service
 public class OmcOrderDetailServiceImpl extends BaseService<OmcOrderDetail> implements OmcOrderDetailService {
-	@Resource
-	private OmcOrderDetailMapper omcOrderDetailMapper;
+    @Resource
+    private OmcOrderDetailMapper omcOrderDetailMapper;
 
-	@Override
-	public List<OmcOrderDetail> getListByOrderNoUserId(String orderNo, Long userId) {
-		Preconditions.checkArgument(userId != null, ErrorCodeEnum.UAC10011001.msg());
-		Preconditions.checkArgument(StringUtils.isNotEmpty(orderNo), "订单号不能为空");
+    @Override
+    public List<OmcOrderDetail> getListByOrderNoUserId(String orderNo, Long userId) {
+        Preconditions.checkArgument(userId != null, ErrorCodeEnum.UAC10011001.msg());
+        Preconditions.checkArgument(StringUtils.isNotEmpty(orderNo), "订单号不能为空");
 
-		return omcOrderDetailMapper.getListByOrderNoUserId(orderNo, userId);
-	}
+        return omcOrderDetailMapper.getListByOrderNoUserId(orderNo, userId);
+    }
 
-	@Override
-	public List<OmcOrderDetail> getListByOrderNo(String orderNo) {
-		Preconditions.checkArgument(StringUtils.isNotEmpty(orderNo), "订单号不能为空");
-		return omcOrderDetailMapper.getListByOrderNo(orderNo);
-	}
+    @Override
+    public List<OmcOrderDetail> getListByOrderNo(String orderNo) {
+        Preconditions.checkArgument(StringUtils.isNotEmpty(orderNo), "订单号不能为空");
+        return omcOrderDetailMapper.getListByOrderNo(orderNo);
+    }
 
-	@Override
-	public void batchInsertOrderDetail(List<OmcOrderDetail> omcOrderDetailList) {
-		int insertResult = omcOrderDetailMapper.batchInsertOrderDetail(omcOrderDetailList);
-		if (insertResult < omcOrderDetailList.size()) {
-			throw new OmcBizException(ErrorCodeEnum.OMC10031009);
-		}
-	}
+    @Override
+    public void batchInsertOrderDetail(List<OmcOrderDetail> omcOrderDetailList) {
+        int insertResult = omcOrderDetailMapper.batchInsertOrderDetail(omcOrderDetailList);
+        if (insertResult < omcOrderDetailList.size()) {
+            throw new OmcBizException(ErrorCodeEnum.OMC10031009);
+        }
+    }
 }

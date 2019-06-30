@@ -27,12 +27,11 @@ import java.util.List;
 @Mapper
 @Component
 public interface TpcMqTopicMapper extends MyMapper<TpcMqTopic> {
-	/**
-	 * List tpc mq topic vo with page list.
-	 *
-	 * @param tpcMqTopic the tpc mq topic
-	 *
-	 * @return the list
-	 */
-	List<TpcMqTopicVo> listTpcMqTopicVoWithPage(TpcMqTopic tpcMqTopic);
+    /**
+     * List tpc mq topic vo with page list.
+     *
+     * @param tpcMqTopic the tpc mq topic
+     * @return the list
+     */
+    List<TpcMqTopicVo> listTpcMqTopicVoWithPage(TpcMqTopic tpcMqTopic);
 }

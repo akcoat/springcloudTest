@@ -31,48 +31,48 @@ import javax.annotation.Resource;
 @Configuration
 public class QiniuOssConfiguration {
 
-	@Resource
-	private PaascloudProperties paascloudProperties;
+    @Resource
+    private PaascloudProperties paascloudProperties;
 
-	/**
-	 * Auth auth.
-	 *
-	 * @return the auth
-	 */
-	@Bean
-	public Auth auth() {
-		Auth auth = Auth.create(paascloudProperties.getQiniu().getKey().getAccessKey(), paascloudProperties.getQiniu().getKey().getSecretKey());
-		log.info("Create Auth OK.");
-		return auth;
-	}
+    /**
+     * Auth auth.
+     *
+     * @return the auth
+     */
+    @Bean
+    public Auth auth() {
+        Auth auth = Auth.create(paascloudProperties.getQiniu().getKey().getAccessKey(), paascloudProperties.getQiniu().getKey().getSecretKey());
+        log.info("Create Auth OK.");
+        return auth;
+    }
 
-	/**
-	 * Upload manager upload manager.
-	 *
-	 * @return the upload manager
-	 */
-	@Bean
-	public UploadManager uploadManager() {
-		Zone zone = Zone.autoZone();
-		//创建上传对象
-		UploadManager uploadManager = new UploadManager(new com.qiniu.storage.Configuration(zone));
-		log.info("Create UploadManager OK.");
-		return uploadManager;
-	}
+    /**
+     * Upload manager upload manager.
+     *
+     * @return the upload manager
+     */
+    @Bean
+    public UploadManager uploadManager() {
+        Zone zone = Zone.autoZone();
+        //创建上传对象
+        UploadManager uploadManager = new UploadManager(new com.qiniu.storage.Configuration(zone));
+        log.info("Create UploadManager OK.");
+        return uploadManager;
+    }
 
-	/**
-	 * Bucket manager bucket manager.
-	 *
-	 * @return the bucket manager
-	 */
-	@Bean
-	public BucketManager bucketManager() {
-		Zone zone = Zone.autoZone();
-		//创建上传对象
-		BucketManager uploadManager = new BucketManager(auth(), new com.qiniu.storage.Configuration(zone));
-		log.info("Create BucketManager OK.");
-		return uploadManager;
-	}
+    /**
+     * Bucket manager bucket manager.
+     *
+     * @return the bucket manager
+     */
+    @Bean
+    public BucketManager bucketManager() {
+        Zone zone = Zone.autoZone();
+        //创建上传对象
+        BucketManager uploadManager = new BucketManager(auth(), new com.qiniu.storage.Configuration(zone));
+        log.info("Create BucketManager OK.");
+        return uploadManager;
+    }
 
 
 }

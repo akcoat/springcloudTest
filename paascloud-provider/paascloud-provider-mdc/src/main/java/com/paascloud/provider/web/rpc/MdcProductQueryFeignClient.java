@@ -40,27 +40,27 @@ import javax.annotation.Resource;
 @Api(value = "API - MdcProductQueryFeignClient", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class MdcProductQueryFeignClient extends BaseController implements MdcProductQueryFeignApi {
 
-	@Resource
-	private MdcProductService mdcProductService;
+    @Resource
+    private MdcProductService mdcProductService;
 
-	@Override
-	@ApiOperation(httpMethod = "POST", value = "根据商品ID查询商品详细信息")
-	public Wrapper<ProductDetailVo> getProductDetail(@PathVariable("productId") Long productId) {
-		logger.info("根据商品ID查询商品详细信息. productId={}", productId);
-		ProductDetailVo productDto = mdcProductService.getProductDetail(productId);
-		return WrapMapper.wrap(Wrapper.SUCCESS_CODE, Wrapper.SUCCESS_MESSAGE, productDto);
-	}
+    @Override
+    @ApiOperation(httpMethod = "POST", value = "根据商品ID查询商品详细信息")
+    public Wrapper<ProductDetailVo> getProductDetail(@PathVariable("productId") Long productId) {
+        logger.info("根据商品ID查询商品详细信息. productId={}", productId);
+        ProductDetailVo productDto = mdcProductService.getProductDetail(productId);
+        return WrapMapper.wrap(Wrapper.SUCCESS_CODE, Wrapper.SUCCESS_MESSAGE, productDto);
+    }
 
-	@Override
-	@ApiOperation(httpMethod = "POST", value = "根据商品ID查询商品信息")
-	public Wrapper<ProductDto> selectById(@PathVariable("productId") Long productId) {
-		logger.info("根据商品ID查询商品信息. productId={}", productId);
-		ProductDto productDto = null;
-		MdcProduct mdcProduct = mdcProductService.selectByKey(productId);
-		if (PublicUtil.isNotEmpty(mdcProduct)) {
-			productDto = new ProductDto();
-			BeanUtils.copyProperties(mdcProduct, productDto);
-		}
-		return WrapMapper.ok(productDto);
-	}
+    @Override
+    @ApiOperation(httpMethod = "POST", value = "根据商品ID查询商品信息")
+    public Wrapper<ProductDto> selectById(@PathVariable("productId") Long productId) {
+        logger.info("根据商品ID查询商品信息. productId={}", productId);
+        ProductDto productDto = null;
+        MdcProduct mdcProduct = mdcProductService.selectByKey(productId);
+        if (PublicUtil.isNotEmpty(mdcProduct)) {
+            productDto = new ProductDto();
+            BeanUtils.copyProperties(mdcProduct, productDto);
+        }
+        return WrapMapper.ok(productDto);
+    }
 }

@@ -15,16 +15,16 @@ import java.io.Serializable;
 @ApiModel(value = "用户禁用/启用Dto ")
 public class ModifyUserStatusDto implements Serializable {
 
-	private static final long serialVersionUID = 1494899235149813850L;
-	/**
-	 * 用户ID
-	 */
-	@ApiModelProperty(value = "用户ID")
-	private Long userId;
+    private static final long serialVersionUID = 1494899235149813850L;
+    /**
+     * 用户ID
+     */
+    @ApiModelProperty(value = "用户ID")
+    private Long userId;
 
-	/**
-	 * 状态
-	 */
-	@ApiModelProperty(value = "状态")
-	private String status;
+    /**
+     * 状态
+     */
+    @ApiModelProperty(value = "状态")
+    private String status;
 }

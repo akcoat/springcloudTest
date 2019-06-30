@@ -27,10 +27,10 @@ import java.io.Serializable;
 @ApiModel
 public class CheckGroupCodeDto implements Serializable {
 
-	private static final long serialVersionUID = -7471245927289653237L;
-	@ApiModelProperty(value = "组织ID")
-	private Long groupId;
+    private static final long serialVersionUID = -7471245927289653237L;
+    @ApiModelProperty(value = "组织ID")
+    private Long groupId;
 
-	@ApiModelProperty(value = "组织code")
-	private String groupCode;
+    @ApiModelProperty(value = "组织code")
+    private String groupCode;
 }

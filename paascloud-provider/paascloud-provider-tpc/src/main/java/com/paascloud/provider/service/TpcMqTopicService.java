@@ -23,13 +23,12 @@ import java.util.List;
  * @author paascloud.net @gmail.com
  */
 public interface TpcMqTopicService extends IService<TpcMqTopic> {
-	/**
-	 * 查询MQ topic列表.
-	 *
-	 * @param mdcMqTopic the mdc mq topic
-	 *
-	 * @return the list
-	 */
-	List<TpcMqTopicVo> listWithPage(TpcMqTopic mdcMqTopic);
+    /**
+     * 查询MQ topic列表.
+     *
+     * @param mdcMqTopic the mdc mq topic
+     * @return the list
+     */
+    List<TpcMqTopicVo> listWithPage(TpcMqTopic mdcMqTopic);
 
 }

@@ -27,12 +27,11 @@ import java.util.List;
 @Mapper
 @Component
 public interface MdcExceptionLogMapper extends MyMapper<MdcExceptionLog> {
-	/**
-	 * Query exception list with page list.
-	 *
-	 * @param mdcExceptionQueryDto the mdc exception query dto
-	 *
-	 * @return the list
-	 */
-	List<MdcExceptionLog> queryExceptionListWithPage(MdcExceptionQueryDto mdcExceptionQueryDto);
+    /**
+     * Query exception list with page list.
+     *
+     * @param mdcExceptionQueryDto the mdc exception query dto
+     * @return the list
+     */
+    List<MdcExceptionLog> queryExceptionListWithPage(MdcExceptionQueryDto mdcExceptionQueryDto);
 }

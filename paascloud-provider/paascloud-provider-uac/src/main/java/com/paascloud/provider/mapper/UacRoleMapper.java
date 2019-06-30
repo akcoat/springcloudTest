@@ -29,58 +29,52 @@ import java.util.List;
 @Mapper
 @Component
 public interface UacRoleMapper extends MyMapper<UacRole> {
-	/**
-	 * Find by role code uac role.
-	 *
-	 * @param roleCode the role code
-	 *
-	 * @return the uac role
-	 */
-	UacRole findByRoleCode(String roleCode);
+    /**
+     * Find by role code uac role.
+     *
+     * @param roleCode the role code
+     * @return the uac role
+     */
+    UacRole findByRoleCode(String roleCode);
 
-	/**
-	 * Query role list with page list.
-	 *
-	 * @param role the role
-	 *
-	 * @return the list
-	 */
-	List<RoleVo> queryRoleListWithPage(UacRole role);
+    /**
+     * Query role list with page list.
+     *
+     * @param role the role
+     * @return the list
+     */
+    List<RoleVo> queryRoleListWithPage(UacRole role);
 
-	/**
-	 * Select all role info by user id list.
-	 *
-	 * @param userId the user id
-	 *
-	 * @return the list
-	 */
-	List<UacRole> selectAllRoleInfoByUserId(Long userId);
+    /**
+     * Select all role info by user id list.
+     *
+     * @param userId the user id
+     * @return the list
+     */
+    List<UacRole> selectAllRoleInfoByUserId(Long userId);
 
-	/**
-	 * Select role list list.
-	 *
-	 * @param uacRole the uac role
-	 *
-	 * @return the list
-	 */
-	List<UacRole> selectRoleList(UacRole uacRole);
+    /**
+     * Select role list list.
+     *
+     * @param uacRole the uac role
+     * @return the list
+     */
+    List<UacRole> selectRoleList(UacRole uacRole);
 
-	/**
-	 * Batch delete by id list int.
-	 *
-	 * @param idList the id list
-	 *
-	 * @return the int
-	 */
-	int batchDeleteByIdList(@Param("idList") List<Long> idList);
+    /**
+     * Batch delete by id list int.
+     *
+     * @param idList the id list
+     * @return the int
+     */
+    int batchDeleteByIdList(@Param("idList") List<Long> idList);
 
-	/**
-	 * Select all need bind user list.
-	 *
-	 * @param superManagerRoleId the super manager role id
-	 * @param currentUserId      the current user id
-	 *
-	 * @return the list
-	 */
-	List<BindUserDto> selectAllNeedBindUser(@Param("superManagerRoleId") Long superManagerRoleId, @Param("currentUserId") Long currentUserId);
+    /**
+     * Select all need bind user list.
+     *
+     * @param superManagerRoleId the super manager role id
+     * @param currentUserId      the current user id
+     * @return the list
+     */
+    List<BindUserDto> selectAllNeedBindUser(@Param("superManagerRoleId") Long superManagerRoleId, @Param("currentUserId") Long currentUserId);
 }

@@ -15,19 +15,18 @@ import org.springframework.stereotype.Component;
 @Component
 public class PcPermissionAuthorizeConfigProvider implements AuthorizeConfigProvider {
 
-	/**
-	 * Config boolean.
-	 *
-	 * @param config the config
-	 *
-	 * @return the boolean
-	 */
-	@Override
-	public boolean config(ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry config) {
-		config
-				.anyRequest()
-				.access("@permissionService.hasPermission(authentication,request)");
-		return true;
-	}
+    /**
+     * Config boolean.
+     *
+     * @param config the config
+     * @return the boolean
+     */
+    @Override
+    public boolean config(ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry config) {
+        config
+                .anyRequest()
+                .access("@permissionService.hasPermission(authentication,request)");
+        return true;
+    }
 
 }

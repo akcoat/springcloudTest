@@ -23,12 +23,14 @@ import org.junit.Test;
 import javax.annotation.Resource;
 import java.util.Map;
 import java.util.Set;
+
 @Slf4j
-public class MailTest extends PaasCloudOmcApplicationTests{
+public class MailTest extends PaasCloudOmcApplicationTests {
     @Resource
     private OptSendMailService optSendMailService;
     @Resource
     private OptFreeMarkerService optVelocityService;
+
     @Test
     @Ignore
     public void sendSimpleMailText() throws Exception {

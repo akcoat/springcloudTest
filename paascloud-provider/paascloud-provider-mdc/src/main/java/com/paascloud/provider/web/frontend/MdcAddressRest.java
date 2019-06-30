@@ -37,21 +37,21 @@ import java.util.List;
 @Api(value = "WEB - MdcAddressRest", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class MdcAddressRest extends BaseController {
 
-	@Resource
-	private MdcAddressService mdcAddressService;
+    @Resource
+    private MdcAddressService mdcAddressService;
 
 
-	/**
-	 * Gets 4 city.
-	 *
-	 * @return the 4 city
-	 */
-	@PostMapping(value = "/get4City")
-	@ApiOperation(httpMethod = "POST", value = "查看四级地址")
-	public Wrapper<List<TreeNode>> get4City() {
-		logger.info("get4City - 获取四级地址");
-		List<TreeNode> treeNodeList = mdcAddressService.get4City();
-		return WrapMapper.ok(treeNodeList);
-	}
+    /**
+     * Gets 4 city.
+     *
+     * @return the 4 city
+     */
+    @PostMapping(value = "/get4City")
+    @ApiOperation(httpMethod = "POST", value = "查看四级地址")
+    public Wrapper<List<TreeNode>> get4City() {
+        logger.info("get4City - 获取四级地址");
+        List<TreeNode> treeNodeList = mdcAddressService.get4City();
+        return WrapMapper.ok(treeNodeList);
+    }
 
 }

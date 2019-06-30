@@ -24,11 +24,11 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class TpcMqProducerVo extends TpcMqPublishVo {
-	private static final long serialVersionUID = -5644698735373761104L;
+    private static final long serialVersionUID = -5644698735373761104L;
 
-	/**
-	 * 发布Topic集合
-	 */
-	private List<TpcMqTopicVo> mqTopicVoList;
+    /**
+     * 发布Topic集合
+     */
+    private List<TpcMqTopicVo> mqTopicVoList;
 
 }

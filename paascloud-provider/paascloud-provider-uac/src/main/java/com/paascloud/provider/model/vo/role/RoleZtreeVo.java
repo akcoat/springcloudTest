@@ -23,5 +23,5 @@ import java.io.Serializable;
  */
 public class RoleZtreeVo extends ZtreeResponseVo implements Serializable {
 
-	private static final long serialVersionUID = 2094987521303893688L;
+    private static final long serialVersionUID = 2094987521303893688L;
 }

@@ -30,75 +30,67 @@ import java.util.Set;
 @Component
 public interface UacMenuMapper extends MyMapper<UacMenu> {
 
-	/**
-	 * Find menu vo list by user id list.
-	 *
-	 * @param userId the user id
-	 *
-	 * @return the list
-	 */
-	List<MenuVo> findMenuVoListByUserId(Long userId);
+    /**
+     * Find menu vo list by user id list.
+     *
+     * @param userId the user id
+     * @return the list
+     */
+    List<MenuVo> findMenuVoListByUserId(Long userId);
 
-	/**
-	 * Find menu code list by user id list.
-	 *
-	 * @param userId the user id
-	 *
-	 * @return the list
-	 */
-	List<String> findMenuCodeListByUserId(Long userId);
+    /**
+     * Find menu code list by user id list.
+     *
+     * @param userId the user id
+     * @return the list
+     */
+    List<String> findMenuCodeListByUserId(Long userId);
 
-	/**
-	 * Select menu list list.
-	 *
-	 * @param uacMenu the uac menu
-	 *
-	 * @return the list
-	 */
-	List<UacMenu> selectMenuList(UacMenu uacMenu);
+    /**
+     * Select menu list list.
+     *
+     * @param uacMenu the uac menu
+     * @return the list
+     */
+    List<UacMenu> selectMenuList(UacMenu uacMenu);
 
-	/**
-	 * Select menu child count by pid int.
-	 *
-	 * @param pid the pid
-	 *
-	 * @return the int
-	 */
-	int selectMenuChildCountByPid(Long pid);
+    /**
+     * Select menu child count by pid int.
+     *
+     * @param pid the pid
+     * @return the int
+     */
+    int selectMenuChildCountByPid(Long pid);
 
-	/**
-	 * Select by url uac menu.
-	 *
-	 * @param url the url
-	 *
-	 * @return the uac menu
-	 */
-	UacMenu selectByUrl(String url);
+    /**
+     * Select by url uac menu.
+     *
+     * @param url the url
+     * @return the uac menu
+     */
+    UacMenu selectByUrl(String url);
 
-	/**
-	 * Update menu int.
-	 *
-	 * @param uacMenu the uac menu
-	 *
-	 * @return the int
-	 */
-	int updateMenu(UacMenu uacMenu);
+    /**
+     * Update menu int.
+     *
+     * @param uacMenu the uac menu
+     * @return the int
+     */
+    int updateMenu(UacMenu uacMenu);
 
-	/**
-	 * 根据角色ID查询菜单列表.
-	 *
-	 * @param roleId the role id
-	 *
-	 * @return the list
-	 */
-	List<UacMenu> listMenuListByRoleId(@Param("roleId") Long roleId);
+    /**
+     * 根据角色ID查询菜单列表.
+     *
+     * @param roleId the role id
+     * @return the list
+     */
+    List<UacMenu> listMenuListByRoleId(@Param("roleId") Long roleId);
 
-	/**
-	 * List menu list.
-	 *
-	 * @param menuIdList the menu id list
-	 *
-	 * @return the list
-	 */
-	List<UacMenu> listMenu(@Param("menuIdList") Set<Long> menuIdList);
+    /**
+     * List menu list.
+     *
+     * @param menuIdList the menu id list
+     * @return the list
+     */
+    List<UacMenu> listMenu(@Param("menuIdList") Set<Long> menuIdList);
 }

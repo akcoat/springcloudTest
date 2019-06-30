@@ -22,8 +22,8 @@ import org.hibernate.validator.constraints.NotBlank;
  */
 @Data
 public class RefreshTokenDto {
-	@NotBlank
-	private String refreshToken;
-	@NotBlank
-	private String accessToken;
+    @NotBlank
+    private String refreshToken;
+    @NotBlank
+    private String accessToken;
 }

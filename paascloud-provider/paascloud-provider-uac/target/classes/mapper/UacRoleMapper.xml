@@ -67,12 +67,12 @@
             AND update_time = #{updateTime,jdbcType=TIMESTAMP}
         </if>
     </sql>
-    <sql id ="Base_OrderBy_Condition">
+    <sql id="Base_OrderBy_Condition">
         <if test="orderBy != null and orderBy !=''">
             ORDER BY ${orderBy}
         </if>
     </sql>
-    <sql id ="Base_Set_Condition">
+    <sql id="Base_Set_Condition">
         <set>
             <if test="version != null">
                 version = version + 1,
@@ -141,49 +141,51 @@
     </select>
     <select id="selectAllRoleInfoByUserId" resultMap="BaseResultMap">
         SELECT
-            r.id,
-            r.role_name,
-            r.role_code,
-            r.remark,
-            r.status
+        r.id,
+        r.role_name,
+        r.role_code,
+        r.remark,
+        r.status
         FROM
-            pc_uac_role r
-            LEFT JOIN pc_uac_role_user ru ON ru.role_id = r.id
+        pc_uac_role r
+        LEFT JOIN pc_uac_role_user ru ON ru.role_id = r.id
         WHERE ru.user_id = #{userId}
     </select>
     <select id="selectRoleList" resultMap="BaseResultMap" parameterType="uacRole">
         SELECT
-            <include refid="Base_Column_List"/>
+        <include refid="Base_Column_List"/>
         FROM
-            pc_uac_role r
+        pc_uac_role r
         WHERE
-            1=1 <include refid="Base_Where_Condition"/>
+        1=1
+        <include refid="Base_Where_Condition"/>
         <if test="orderBy != null and orderBy !=''">
             ORDER BY ${orderBy}
         </if>
     </select>
-    <select id="selectAllNeedBindUser" parameterType="map" resultType="com.paascloud.provider.model.dto.role.BindUserDto">
+    <select id="selectAllNeedBindUser" parameterType="map"
+            resultType="com.paascloud.provider.model.dto.role.BindUserDto">
         SELECT
-            a.id as userId,
-            a.mobile_no as mobileNo,
-            a.user_name as userName,
-            (a.id = b.id) OR (a.id = #{currentUserId}) AS disabled
+        a.id as userId,
+        a.mobile_no as mobileNo,
+        a.user_name as userName,
+        (a.id = b.id) OR (a.id = #{currentUserId}) AS disabled
         FROM
-            (
-                SELECT
-                    u.id,
-                    u.mobile_no,
-                    u.user_name
-                FROM pc_uac_user u) a
-            LEFT JOIN
-            (
-                SELECT
-                    u.id,
-                    u.mobile_no,
-                    u.user_name
-                FROM pc_uac_user u INNER JOIN pc_uac_role_user ru ON u.id = ru.user_id
-                    INNER JOIN pc_uac_role role ON role.id = ru.role_id
-                WHERE role.id = #{superManagerRoleId}) b
+        (
+        SELECT
+        u.id,
+        u.mobile_no,
+        u.user_name
+        FROM pc_uac_user u) a
+        LEFT JOIN
+        (
+        SELECT
+        u.id,
+        u.mobile_no,
+        u.user_name
+        FROM pc_uac_user u INNER JOIN pc_uac_role_user ru ON u.id = ru.user_id
+        INNER JOIN pc_uac_role role ON role.id = ru.role_id
+        WHERE role.id = #{superManagerRoleId}) b
         ON a.id = b.id
     </select>
     <delete id="batchDeleteByIdList" parameterType="list">

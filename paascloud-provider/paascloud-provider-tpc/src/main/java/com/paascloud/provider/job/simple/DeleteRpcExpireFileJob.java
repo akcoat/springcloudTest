@@ -28,16 +28,16 @@ import javax.annotation.Resource;
 @ElasticJobConfig(cron = "0 0 0 1/1 * ?")
 public class DeleteRpcExpireFileJob implements SimpleJob {
 
-	@Resource
-	private OpcRpcService opcRpcService;
+    @Resource
+    private OpcRpcService opcRpcService;
 
-	/**
-	 * Execute.
-	 *
-	 * @param shardingContext the sharding context
-	 */
-	@Override
-	public void execute(final ShardingContext shardingContext) {
-		opcRpcService.deleteExpireFile();
-	}
+    /**
+     * Execute.
+     *
+     * @param shardingContext the sharding context
+     */
+    @Override
+    public void execute(final ShardingContext shardingContext) {
+        opcRpcService.deleteExpireFile();
+    }
 }

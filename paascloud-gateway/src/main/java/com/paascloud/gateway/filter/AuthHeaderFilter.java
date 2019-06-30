@@ -19,15 +19,14 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
 
 import static org.springframework.cloud.netflix.zuul.filters.support.FilterConstants.PRE_DECORATION_FILTER_ORDER;
 
 /**
- * The class Auth header filter.
  *
- * @author paascloud.net @gmail.com
  */
 
 
@@ -47,7 +46,8 @@ public class AuthHeaderFilter extends ZuulFilter {
 
 	/**
 	 * Filter type string.
-	 *
+	 *	过滤器类型选择：
+	 *pre 路由前，route 路由中，post 路由后，error 出现错误时
 	 * @return the string
 	 */
 	@Override
@@ -88,15 +88,26 @@ public class AuthHeaderFilter extends ZuulFilter {
 	@Override
 	public Object run() {
 		log.info("AuthHeaderFilter - 开始鉴权...");
+		// 获取当前的请求上下文
 		RequestContext requestContext = RequestContext.getCurrentContext();
-		/*try {
-			doSomething(requestContext);
-		} catch (Exception e) {
-			log.error("AuthHeaderFilter - [FAIL] EXCEPTION={}", e.getMessage(), e);
-			throw new BusinessException(ErrorCodeEnum.UAC10011041);
-		}*/
+		//取出当前请求
+		HttpServletRequest request = requestContext.getRequest();
+		log.info("进入访问过滤器，访问的url:{}，访问的方法：{}",request.getRequestURL(),request.getMethod());
+		//从headers中取出key为accessToken值
+		String accessToken = request.getHeader("accessToken");//这里我把token写进headers中了
+		//这里简单校验下如果headers中没有这个accessToken或者该值为空的情况
+		//那么就拦截不入放行，返回401状态码
+		if(StringUtils.isEmpty(accessToken)) {
+			log.info("当前请求没有accessToken");
+			//使用Zuul来过滤这次请求
+			requestContext.setSendZuulResponse(false);
+			requestContext.setResponseStatusCode(401);
+			return null;
+		}
+		log.info("请求通过过滤器");
 		return null;
 	}
+
 
 	private void doSomething(RequestContext requestContext) throws ZuulException {
 		HttpServletRequest request = requestContext.getRequest();

@@ -19,12 +19,11 @@ import com.paascloud.provider.model.dto.AddressDTO;
  * @author paascloud.net@gmail.com
  */
 public interface MdcAddressService {
-	/**
-	 * Gets address by id.
-	 *
-	 * @param addressId the address id
-	 *
-	 * @return the address by id
-	 */
-	AddressDTO getAddressById(Long addressId);
+    /**
+     * Gets address by id.
+     *
+     * @param addressId the address id
+     * @return the address by id
+     */
+    AddressDTO getAddressById(Long addressId);
 }

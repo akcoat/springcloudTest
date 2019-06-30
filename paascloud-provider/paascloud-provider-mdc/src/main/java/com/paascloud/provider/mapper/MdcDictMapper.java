@@ -27,10 +27,10 @@ import java.util.List;
 @Mapper
 @Component
 public interface MdcDictMapper extends MyMapper<MdcDict> {
-	/**
-	 * List dict vo list.
-	 *
-	 * @return the list
-	 */
-	List<MdcDictVo> listDictVo();
+    /**
+     * List dict vo list.
+     *
+     * @return the list
+     */
+    List<MdcDictVo> listDictVo();
 }

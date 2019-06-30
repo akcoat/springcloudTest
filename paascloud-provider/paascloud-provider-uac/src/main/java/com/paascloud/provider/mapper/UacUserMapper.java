@@ -30,75 +30,67 @@ import java.util.Map;
 @Component
 public interface UacUserMapper extends MyMapper<UacUser> {
 
-	/**
-	 * Find by login name uac user.
-	 *
-	 * @param loginName the login name
-	 *
-	 * @return the uac user
-	 */
-	UacUser findByLoginName(String loginName);
+    /**
+     * Find by login name uac user.
+     *
+     * @param loginName the login name
+     * @return the uac user
+     */
+    UacUser findByLoginName(String loginName);
 
-	/**
-	 * Find by mobile no uac user.
-	 *
-	 * @param mobileNo the mobile no
-	 *
-	 * @return the uac user
-	 */
-	UacUser findByMobileNo(@Param("mobileNo") String mobileNo);
+    /**
+     * Find by mobile no uac user.
+     *
+     * @param mobileNo the mobile no
+     * @return the uac user
+     */
+    UacUser findByMobileNo(@Param("mobileNo") String mobileNo);
 
-	/**
-	 * Find by login name and login pwd uac user.
-	 *
-	 * @param loginNamePwdMap the login name pwd map
-	 *
-	 * @return the uac user
-	 */
-	UacUser findByLoginNameAndLoginPwd(Map<String, String> loginNamePwdMap);
+    /**
+     * Find by login name and login pwd uac user.
+     *
+     * @param loginNamePwdMap the login name pwd map
+     * @return the uac user
+     */
+    UacUser findByLoginNameAndLoginPwd(Map<String, String> loginNamePwdMap);
 
-	/**
-	 * Select user list list.
-	 *
-	 * @param uacUser the uac user
-	 *
-	 * @return the list
-	 */
-	List<UacUser> selectUserList(UacUser uacUser);
+    /**
+     * Select user list list.
+     *
+     * @param uacUser the uac user
+     * @return the list
+     */
+    List<UacUser> selectUserList(UacUser uacUser);
 
-	/**
-	 * Select user info by user id uac user.
-	 *
-	 * @param userId the user id
-	 *
-	 * @return the uac user
-	 */
-	UacUser selectUserInfoByUserId(Long userId);
+    /**
+     * Select user info by user id uac user.
+     *
+     * @param userId the user id
+     * @return the uac user
+     */
+    UacUser selectUserInfoByUserId(Long userId);
 
-	/**
-	 * Update uac user int.
-	 *
-	 * @param user the user
-	 *
-	 * @return the int
-	 */
-	int updateUacUser(UacUser user);
+    /**
+     * Update uac user int.
+     *
+     * @param user the user
+     * @return the int
+     */
+    int updateUacUser(UacUser user);
 
-	/**
-	 * Select all need bind role list.
-	 *
-	 * @param superManagerRoleId the super manager role id
-	 *
-	 * @return the list
-	 */
-	List<BindRoleDto> selectAllNeedBindRole(@Param("superManagerRoleId") Long superManagerRoleId);
+    /**
+     * Select all need bind role list.
+     *
+     * @param superManagerRoleId the super manager role id
+     * @return the list
+     */
+    List<BindRoleDto> selectAllNeedBindRole(@Param("superManagerRoleId") Long superManagerRoleId);
 
-	/**
-	 * Find user info by login name uac user.
-	 *
-	 * @param loginName the login name
-	 *
-	 * @return the uac user
-	 */
-	UacUser findUserInfoByLoginName(@Param("loginName") String loginName);
+    /**
+     * Find user info by login name uac user.
+     *
+     * @param loginName the login name
+     * @return the uac user
+     */
+    UacUser findUserInfoByLoginName(@Param("loginName") String loginName);
 }

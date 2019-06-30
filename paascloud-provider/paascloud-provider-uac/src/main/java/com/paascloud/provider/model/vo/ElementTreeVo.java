@@ -23,9 +23,9 @@ import java.util.List;
  */
 @Data
 public class ElementTreeVo implements Serializable {
-	private static final long serialVersionUID = -7266614376023024646L;
+    private static final long serialVersionUID = -7266614376023024646L;
 
-	private String label;
+    private String label;
 
-	private List<ElementTreeVo> children;
+    private List<ElementTreeVo> children;
 }

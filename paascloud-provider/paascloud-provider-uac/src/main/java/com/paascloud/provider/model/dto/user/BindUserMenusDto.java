@@ -15,11 +15,11 @@ import java.util.List;
 @Data
 public class BindUserMenusDto implements Serializable {
 
-	private static final long serialVersionUID = -5046118305639420777L;
+    private static final long serialVersionUID = -5046118305639420777L;
 
-	/**
-	 * 菜单ID
-	 */
-	@ApiModelProperty(value = "菜单ID")
-	private List<Long> menuIdList;
+    /**
+     * 菜单ID
+     */
+    @ApiModelProperty(value = "菜单ID")
+    private List<Long> menuIdList;
 }

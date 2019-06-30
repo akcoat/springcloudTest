@@ -33,27 +33,27 @@ import javax.annotation.Resource;
 @Slf4j
 @ElasticJobConfig(cron = "0 0 0 1/1 * ?")
 public class DeleteRpcConsumerMessageJob implements SimpleJob {
-	@Resource
-	private PaascloudProperties paascloudProperties;
-	@Resource
-	private TpcMqMessageService tpcMqMessageService;
+    @Resource
+    private PaascloudProperties paascloudProperties;
+    @Resource
+    private TpcMqMessageService tpcMqMessageService;
 
-	/**
-	 * Execute.
-	 *
-	 * @param shardingContext the sharding context
-	 */
-	@Override
-	public void execute(final ShardingContext shardingContext) {
-		ShardingContextDto shardingContextDto = new ShardingContextDto(shardingContext.getShardingTotalCount(), shardingContext.getShardingItem());
-		final TpcMqMessageDto message = new TpcMqMessageDto();
-		message.setMessageBody(JSON.toJSONString(shardingContextDto));
-		message.setMessageTag(AliyunMqTopicConstants.MqTagEnum.DELETE_CONSUMER_MESSAGE.getTag());
-		message.setMessageTopic(AliyunMqTopicConstants.MqTopicEnum.TPC_TOPIC.getTopic());
-		message.setProducerGroup(paascloudProperties.getAliyun().getRocketMq().getProducerGroup());
-		String refNo = Long.toString(UniqueIdGenerator.generateId());
-		message.setRefNo(refNo);
-		message.setMessageKey(refNo);
-		tpcMqMessageService.saveAndSendMessage(message);
-	}
+    /**
+     * Execute.
+     *
+     * @param shardingContext the sharding context
+     */
+    @Override
+    public void execute(final ShardingContext shardingContext) {
+        ShardingContextDto shardingContextDto = new ShardingContextDto(shardingContext.getShardingTotalCount(), shardingContext.getShardingItem());
+        final TpcMqMessageDto message = new TpcMqMessageDto();
+        message.setMessageBody(JSON.toJSONString(shardingContextDto));
+        message.setMessageTag(AliyunMqTopicConstants.MqTagEnum.DELETE_CONSUMER_MESSAGE.getTag());
+        message.setMessageTopic(AliyunMqTopicConstants.MqTopicEnum.TPC_TOPIC.getTopic());
+        message.setProducerGroup(paascloudProperties.getAliyun().getRocketMq().getProducerGroup());
+        String refNo = Long.toString(UniqueIdGenerator.generateId());
+        message.setRefNo(refNo);
+        message.setMessageKey(refNo);
+        tpcMqMessageService.saveAndSendMessage(message);
+    }
 }

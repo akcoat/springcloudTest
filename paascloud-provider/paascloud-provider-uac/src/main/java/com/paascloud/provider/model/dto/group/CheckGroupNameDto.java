@@ -25,9 +25,9 @@ import lombok.Data;
 @ApiModel
 public class CheckGroupNameDto {
 
-	@ApiModelProperty(value = "组织ID")
-	private Long groupId;
+    @ApiModelProperty(value = "组织ID")
+    private Long groupId;
 
-	@ApiModelProperty(value = "组织名称")
-	private String groupName;
+    @ApiModelProperty(value = "组织名称")
+    private String groupName;
 }

@@ -14,16 +14,16 @@ import java.io.Serializable;
 @Data
 @ApiModel(value = "UacMenuStatusDto")
 public class UacMenuStatusDto implements Serializable {
-	private static final long serialVersionUID = 7834606418601316142L;
-	/**
-	 * 菜单的Id
-	 */
-	@ApiModelProperty(value = "菜单的Id", required = true)
-	private Long id;
-	/**
-	 * 菜单的父Id
-	 */
-	@ApiModelProperty(value = "菜单的状态", required = true)
-	private String status;
+    private static final long serialVersionUID = 7834606418601316142L;
+    /**
+     * 菜单的Id
+     */
+    @ApiModelProperty(value = "菜单的Id", required = true)
+    private Long id;
+    /**
+     * 菜单的父Id
+     */
+    @ApiModelProperty(value = "菜单的状态", required = true)
+    private String status;
 
 }

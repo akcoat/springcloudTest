@@ -28,40 +28,36 @@ import java.util.List;
  */
 public interface UacLogService extends IService<UacLog> {
 
-	/**
-	 * Save log int.
-	 *
-	 * @param uacLog       the uac log
-	 * @param loginAuthDto the login auth dto
-	 *
-	 * @return the int
-	 */
-	int saveLog(UacLog uacLog, LoginAuthDto loginAuthDto);
+    /**
+     * Save log int.
+     *
+     * @param uacLog       the uac log
+     * @param loginAuthDto the login auth dto
+     * @return the int
+     */
+    int saveLog(UacLog uacLog, LoginAuthDto loginAuthDto);
 
-	/**
-	 * Query user log list with user id list.
-	 *
-	 * @param userId the user id
-	 *
-	 * @return the list
-	 */
-	List<UacLog> selectUserLogListByUserId(Long userId);
+    /**
+     * Query user log list with user id list.
+     *
+     * @param userId the user id
+     * @return the list
+     */
+    List<UacLog> selectUserLogListByUserId(Long userId);
 
-	/**
-	 * Save operation log integer.
-	 *
-	 * @param operationLogDto the operation log dto
-	 *
-	 * @return the integer
-	 */
-	Integer saveOperationLog(OperationLogDto operationLogDto);
+    /**
+     * Save operation log integer.
+     *
+     * @param operationLogDto the operation log dto
+     * @return the integer
+     */
+    Integer saveOperationLog(OperationLogDto operationLogDto);
 
-	/**
-	 * Query log list with page wrapper.
-	 *
-	 * @param uacLogQueryDtoPage the uac log query dto page
-	 *
-	 * @return the wrapper
-	 */
-	PageInfo queryLogListWithPage(UacLogMainDto uacLogQueryDtoPage);
+    /**
+     * Query log list with page wrapper.
+     *
+     * @param uacLogQueryDtoPage the uac log query dto page
+     * @return the wrapper
+     */
+    PageInfo queryLogListWithPage(UacLogMainDto uacLogQueryDtoPage);
 }

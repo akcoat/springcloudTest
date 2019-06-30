@@ -30,23 +30,23 @@ import java.util.List;
 @Component
 public class OpcRpcService {
 
-	@Resource
-	private DingtalkFeignApi dingtalkFeignApi;
-	@Resource
-	private OpcOssFeignApi opcOssFeignApi;
+    @Resource
+    private DingtalkFeignApi dingtalkFeignApi;
+    @Resource
+    private OpcOssFeignApi opcOssFeignApi;
 
-	public boolean sendChatRobotMsg(ChatRobotMsgDto chatRobotMsgDto) {
-		Wrapper<Boolean> result = dingtalkFeignApi.sendChatRobotMsg(chatRobotMsgDto);
-		return result.getResult();
-	}
+    public boolean sendChatRobotMsg(ChatRobotMsgDto chatRobotMsgDto) {
+        Wrapper<Boolean> result = dingtalkFeignApi.sendChatRobotMsg(chatRobotMsgDto);
+        return result.getResult();
+    }
 
-	public List<ElementImgUrlDto> listFileUrl(OptBatchGetUrlRequest urlRequest) {
-		Wrapper<List<ElementImgUrlDto>> result = opcOssFeignApi.listFileUrl(urlRequest);
-		return result.getResult();
-	}
+    public List<ElementImgUrlDto> listFileUrl(OptBatchGetUrlRequest urlRequest) {
+        Wrapper<List<ElementImgUrlDto>> result = opcOssFeignApi.listFileUrl(urlRequest);
+        return result.getResult();
+    }
 
-	public String getFileUrl(final OptGetUrlRequest request) {
-		Wrapper<String> result = opcOssFeignApi.getFileUrl(request);
-		return result.getResult();
-	}
+    public String getFileUrl(final OptGetUrlRequest request) {
+        Wrapper<String> result = opcOssFeignApi.getFileUrl(request);
+        return result.getResult();
+    }
 }

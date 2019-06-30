@@ -27,16 +27,16 @@ import javax.annotation.Resource;
 @Slf4j
 @ElasticJobConfig(cron = "0 0/30 * * * ?")
 public class HandleUserJwtTokenJob implements SimpleJob {
-	@Resource
-	private UacRpcService uacRpcService;
+    @Resource
+    private UacRpcService uacRpcService;
 
-	/**
-	 * Execute.
-	 *
-	 * @param shardingContext the sharding context
-	 */
-	@Override
-	public void execute(final ShardingContext shardingContext) {
-		uacRpcService.batchUpdateTokenOffLine();
-	}
+    /**
+     * Execute.
+     *
+     * @param shardingContext the sharding context
+     */
+    @Override
+    public void execute(final ShardingContext shardingContext) {
+        uacRpcService.batchUpdateTokenOffLine();
+    }
 }

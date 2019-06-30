@@ -27,12 +27,11 @@ import java.util.List;
 @Mapper
 @Component
 public interface TpcMqTagMapper extends MyMapper<TpcMqTag> {
-	/**
-	 * List tpc mq tag vo with page list.
-	 *
-	 * @param tpcMqTag the tpc mq tag
-	 *
-	 * @return the list
-	 */
-	List<TpcMqTagVo> listTpcMqTagVoWithPage(TpcMqTag tpcMqTag);
+    /**
+     * List tpc mq tag vo with page list.
+     *
+     * @param tpcMqTag the tpc mq tag
+     * @return the list
+     */
+    List<TpcMqTagVo> listTpcMqTagVoWithPage(TpcMqTag tpcMqTag);
 }

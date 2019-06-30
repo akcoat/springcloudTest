@@ -29,39 +29,39 @@ import javax.persistence.Table;
 @Table(name = "pc_tpc_mq_topic")
 @Alias(value = "tpcMqTopic")
 public class TpcMqTopic extends BaseEntity {
-	private static final long serialVersionUID = 5642946024630652202L;
+    private static final long serialVersionUID = 5642946024630652202L;
 
-	/**
-	 * 城市编码
-	 */
-	@Column(name = "topic_code")
-	private String topicCode;
+    /**
+     * 城市编码
+     */
+    @Column(name = "topic_code")
+    private String topicCode;
 
-	/**
-	 * 区域编码
-	 */
-	@Column(name = "topic_name")
-	private String topicName;
+    /**
+     * 区域编码
+     */
+    @Column(name = "topic_name")
+    private String topicName;
 
-	/**
-	 * MQ类型, 10 rocketmq 20 kafka
-	 */
-	@Column(name = "mq_type")
-	private Integer mqType;
+    /**
+     * MQ类型, 10 rocketmq 20 kafka
+     */
+    @Column(name = "mq_type")
+    private Integer mqType;
 
-	/**
-	 * 消息类型, 10 无序消息, 20 无序消息
-	 */
-	@Column(name = "msg_type")
-	private Integer msgType;
+    /**
+     * 消息类型, 10 无序消息, 20 无序消息
+     */
+    @Column(name = "msg_type")
+    private Integer msgType;
 
-	/**
-	 * 状态, 0生效,10,失效
-	 */
-	private Integer status;
+    /**
+     * 状态, 0生效,10,失效
+     */
+    private Integer status;
 
-	/**
-	 * 备注
-	 */
-	private String remarks;
+    /**
+     * 备注
+     */
+    private String remarks;
 }

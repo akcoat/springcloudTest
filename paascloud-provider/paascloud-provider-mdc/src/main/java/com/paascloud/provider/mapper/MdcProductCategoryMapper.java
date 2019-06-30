@@ -28,19 +28,18 @@ import java.util.List;
 @Mapper
 @Component
 public interface MdcProductCategoryMapper extends MyMapper<MdcProductCategory> {
-	/**
-	 * Select category dto list list.
-	 *
-	 * @param categoryPid the category pid
-	 *
-	 * @return the list
-	 */
-	List<ProductCategoryDto> selectCategoryDtoList(Long categoryPid);
+    /**
+     * Select category dto list list.
+     *
+     * @param categoryPid the category pid
+     * @return the list
+     */
+    List<ProductCategoryDto> selectCategoryDtoList(Long categoryPid);
 
-	/**
-	 * List category vo list.
-	 *
-	 * @return the list
-	 */
-	List<MdcCategoryVo> listCategoryVo();
+    /**
+     * List category vo list.
+     *
+     * @return the list
+     */
+    List<MdcCategoryVo> listCategoryVo();
 }

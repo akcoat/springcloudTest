@@ -42,60 +42,58 @@ import javax.annotation.Resource;
 public class UacDictCommonController extends BaseController {
 
 
-	@Resource
-	private MdcDictService mdcDictService;
+    @Resource
+    private MdcDictService mdcDictService;
 
-	/**
-	 * 检测菜单编码是否已存在
-	 *
-	 * @param mdcDictCheckCodeDto the mdc dict check code dto
-	 *
-	 * @return the wrapper
-	 */
-	@PostMapping(value = "/checkDictCode")
-	@ApiOperation(httpMethod = "POST", value = "检测数据字典编码是否已存在")
-	public Wrapper<Boolean> checkDictCode(@ApiParam(name = "uacMenuCheckCodeDto", value = "id与url") @RequestBody MdcDictCheckCodeDto mdcDictCheckCodeDto) {
-		logger.info("检测数据字典编码是否已存在 mdcDictCheckCodeDto={}", mdcDictCheckCodeDto);
+    /**
+     * 检测菜单编码是否已存在
+     *
+     * @param mdcDictCheckCodeDto the mdc dict check code dto
+     * @return the wrapper
+     */
+    @PostMapping(value = "/checkDictCode")
+    @ApiOperation(httpMethod = "POST", value = "检测数据字典编码是否已存在")
+    public Wrapper<Boolean> checkDictCode(@ApiParam(name = "uacMenuCheckCodeDto", value = "id与url") @RequestBody MdcDictCheckCodeDto mdcDictCheckCodeDto) {
+        logger.info("检测数据字典编码是否已存在 mdcDictCheckCodeDto={}", mdcDictCheckCodeDto);
 
-		Long id = mdcDictCheckCodeDto.getDictId();
-		String dictCode = mdcDictCheckCodeDto.getDictCode();
+        Long id = mdcDictCheckCodeDto.getDictId();
+        String dictCode = mdcDictCheckCodeDto.getDictCode();
 
-		Example example = new Example(MdcDict.class);
-		Example.Criteria criteria = example.createCriteria();
+        Example example = new Example(MdcDict.class);
+        Example.Criteria criteria = example.createCriteria();
 
-		if (id != null) {
-			criteria.andNotEqualTo("id", id);
-		}
-		criteria.andEqualTo("dictCode", dictCode);
+        if (id != null) {
+            criteria.andNotEqualTo("id", id);
+        }
+        criteria.andEqualTo("dictCode", dictCode);
 
-		int result = mdcDictService.selectCountByExample(example);
-		return WrapMapper.ok(result < 1);
-	}
+        int result = mdcDictService.selectCountByExample(example);
+        return WrapMapper.ok(result < 1);
+    }
 
-	/**
-	 * 检测数据字典名称是否已存在.
-	 *
-	 * @param mdcDictCheckNameDto the mdc dict check name dto
-	 *
-	 * @return the wrapper
-	 */
-	@PostMapping(value = "/checkDictName")
-	@ApiOperation(httpMethod = "POST", value = "检测数据字典名称是否已存在")
-	public Wrapper<Boolean> checkDictName(@ApiParam(name = "uacMenuCheckCodeDto", value = "id与url") @RequestBody MdcDictCheckNameDto mdcDictCheckNameDto) {
-		logger.info("检测数据字典名称是否已存在 mdcDictCheckNameDto={}", mdcDictCheckNameDto);
+    /**
+     * 检测数据字典名称是否已存在.
+     *
+     * @param mdcDictCheckNameDto the mdc dict check name dto
+     * @return the wrapper
+     */
+    @PostMapping(value = "/checkDictName")
+    @ApiOperation(httpMethod = "POST", value = "检测数据字典名称是否已存在")
+    public Wrapper<Boolean> checkDictName(@ApiParam(name = "uacMenuCheckCodeDto", value = "id与url") @RequestBody MdcDictCheckNameDto mdcDictCheckNameDto) {
+        logger.info("检测数据字典名称是否已存在 mdcDictCheckNameDto={}", mdcDictCheckNameDto);
 
-		Long id = mdcDictCheckNameDto.getDictId();
-		String dictName = mdcDictCheckNameDto.getDictName();
+        Long id = mdcDictCheckNameDto.getDictId();
+        String dictName = mdcDictCheckNameDto.getDictName();
 
-		Example example = new Example(MdcDict.class);
-		Example.Criteria criteria = example.createCriteria();
+        Example example = new Example(MdcDict.class);
+        Example.Criteria criteria = example.createCriteria();
 
-		if (id != null) {
-			criteria.andNotEqualTo("id", id);
-		}
-		criteria.andEqualTo("dictName", dictName);
+        if (id != null) {
+            criteria.andNotEqualTo("id", id);
+        }
+        criteria.andEqualTo("dictName", dictName);
 
-		int result = mdcDictService.selectCountByExample(example);
-		return WrapMapper.ok(result < 1);
-	}
+        int result = mdcDictService.selectCountByExample(example);
+        return WrapMapper.ok(result < 1);
+    }
 }

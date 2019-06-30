@@ -31,48 +31,47 @@ import java.util.List;
  */
 @Service
 public class MdcAddressServiceImpl extends BaseService<MdcAddress> implements MdcAddressService {
-	@Resource
-	private MdcAddressMapper mdcAddressMapper;
+    @Resource
+    private MdcAddressMapper mdcAddressMapper;
 
-	/**
-	 * Find by pid list.
-	 *
-	 * @param pid the pid
-	 *
-	 * @return the list
-	 */
-	@Override
-	public List<MdcAddress> listByPid(Long pid) {
-		return mdcAddressMapper.selectAddressByPid(pid);
-	}
+    /**
+     * Find by pid list.
+     *
+     * @param pid the pid
+     * @return the list
+     */
+    @Override
+    public List<MdcAddress> listByPid(Long pid) {
+        return mdcAddressMapper.selectAddressByPid(pid);
+    }
 
-	@Override
-	@Cacheable(cacheNames = "mdc-cache", key = "#id")
-	public MdcAddress getById(Long id) {
-		return mdcAddressMapper.selectByPrimaryKey(id);
-	}
+    @Override
+    @Cacheable(cacheNames = "mdc-cache", key = "#id")
+    public MdcAddress getById(Long id) {
+        return mdcAddressMapper.selectByPrimaryKey(id);
+    }
 
-	@Override
-	@Cacheable(cacheNames = "mdc-cache", keyGenerator = "keyGenerator")
-	public List<TreeNode> get4City() {
-		List<MdcAddress> mdcAddresses = mdcAddressMapper.selectAll();
-		List<TreeNode> treeNodeList = buildGroupTree(mdcAddresses);
-		logger.info("treeNodeList={}", treeNodeList);
-		return treeNodeList;
-	}
+    @Override
+    @Cacheable(cacheNames = "mdc-cache", keyGenerator = "keyGenerator")
+    public List<TreeNode> get4City() {
+        List<MdcAddress> mdcAddresses = mdcAddressMapper.selectAll();
+        List<TreeNode> treeNodeList = buildGroupTree(mdcAddresses);
+        logger.info("treeNodeList={}", treeNodeList);
+        return treeNodeList;
+    }
 
-	private List<TreeNode> buildGroupTree(List<MdcAddress> mdcAddressesList) {
-		List<TreeNode> list = Lists.newArrayList();
-		TreeNode node;
-		for (MdcAddress group : mdcAddressesList) {
-			node = new TreeNode();
-			node.setId(group.getId());
-			node.setPid(group.getPid());
-			node.setNodeCode(group.getAdCode());
-			node.setNodeName(group.getName());
-			list.add(node);
-		}
+    private List<TreeNode> buildGroupTree(List<MdcAddress> mdcAddressesList) {
+        List<TreeNode> list = Lists.newArrayList();
+        TreeNode node;
+        for (MdcAddress group : mdcAddressesList) {
+            node = new TreeNode();
+            node.setId(group.getId());
+            node.setPid(group.getPid());
+            node.setNodeCode(group.getAdCode());
+            node.setNodeName(group.getName());
+            list.add(node);
+        }
 
-		return RecursionTreeUtil.getChildTreeNodes(list, 368100107951677440L);
-	}
+        return RecursionTreeUtil.getChildTreeNodes(list, 368100107951677440L);
+    }
 }

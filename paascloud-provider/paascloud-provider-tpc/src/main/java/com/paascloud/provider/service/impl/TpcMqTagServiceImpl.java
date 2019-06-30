@@ -32,21 +32,21 @@ import java.util.List;
 @Transactional(rollbackFor = Exception.class)
 public class TpcMqTagServiceImpl extends BaseService<TpcMqTag> implements TpcMqTagService {
 
-	@Resource
-	private TpcMqTagMapper mdcMqTagMapper;
-	@Resource
-	private TpcMqConsumerService mdcMqConsumerService;
+    @Resource
+    private TpcMqTagMapper mdcMqTagMapper;
+    @Resource
+    private TpcMqConsumerService mdcMqConsumerService;
 
-	@Override
-	public List<TpcMqTagVo> listWithPage(TpcMqTag mdcMqTag) {
-		return mdcMqTagMapper.listTpcMqTagVoWithPage(mdcMqTag);
-	}
+    @Override
+    public List<TpcMqTagVo> listWithPage(TpcMqTag mdcMqTag) {
+        return mdcMqTagMapper.listTpcMqTagVoWithPage(mdcMqTag);
+    }
 
-	@Override
-	public int deleteTagById(Long tagId) {
-		// 删除订阅的tag
-		mdcMqConsumerService.deleteSubscribeTagByTagId(tagId);
-		// 删除tag
-		return mdcMqTagMapper.deleteByPrimaryKey(tagId);
-	}
+    @Override
+    public int deleteTagById(Long tagId) {
+        // 删除订阅的tag
+        mdcMqConsumerService.deleteSubscribeTagByTagId(tagId);
+        // 删除tag
+        return mdcMqTagMapper.deleteByPrimaryKey(tagId);
+    }
 }

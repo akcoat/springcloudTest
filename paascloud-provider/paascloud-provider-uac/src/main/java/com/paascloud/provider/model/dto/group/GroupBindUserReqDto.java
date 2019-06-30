@@ -27,11 +27,11 @@ import java.util.List;
 @Data
 @ApiModel(value = "GroupBindUserReqDto")
 public class GroupBindUserReqDto implements Serializable {
-	private static final long serialVersionUID = 89217138744995863L;
+    private static final long serialVersionUID = 89217138744995863L;
 
-	@ApiModelProperty(value = "组织ID")
-	private Long groupId;
+    @ApiModelProperty(value = "组织ID")
+    private Long groupId;
 
-	@ApiModelProperty(value = "用户id")
-	private List<Long> userIdList;
+    @ApiModelProperty(value = "用户id")
+    private List<Long> userIdList;
 }

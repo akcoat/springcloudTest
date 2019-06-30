@@ -16,16 +16,16 @@ import java.io.Serializable;
 @ApiModel(value = "校验新密码是否与原始密码相同Dto ")
 public class CheckNewPasswordDto implements Serializable {
 
-	private static final long serialVersionUID = 4630716723912494960L;
-	/**
-	 * 登录名
-	 */
-	@ApiModelProperty(value = "登录名")
-	private String loginName;
+    private static final long serialVersionUID = 4630716723912494960L;
+    /**
+     * 登录名
+     */
+    @ApiModelProperty(value = "登录名")
+    private String loginName;
 
-	/**
-	 * 手机号
-	 */
-	@ApiModelProperty(value = "手机号")
-	private String newPassword;
+    /**
+     * 手机号
+     */
+    @ApiModelProperty(value = "手机号")
+    private String newPassword;
 }

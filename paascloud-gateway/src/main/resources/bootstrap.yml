@@ -1,14 +1,20 @@
 spring:
   cloud:
     config:
-      fail-fast: true
+      fail-fast: true                       #失败 快速响应与重试
       discovery:
-        service-id: paascloud-discovery
-        enabled: true
+        service-id: paascloud-discovery     #  设置配置中心服务名
+        enabled: true           # 开启配置服务发现
+      profile: dev              # 指定的环境
+      label: master             #指定的分支
+      username: admin           # 由于服务配置中心开启 http basic auth
+      password: admin
+
+tradi
 
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://root:root@paascloud-eureka:8761/eureka/
+      defaultZone: http://root:root@localhost:8761/eureka/
   instance:
     instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${server.port}

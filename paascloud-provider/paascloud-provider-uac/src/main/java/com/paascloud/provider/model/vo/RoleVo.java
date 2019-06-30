@@ -24,22 +24,22 @@ import lombok.EqualsAndHashCode;
 @Data
 public class RoleVo extends BaseVo {
 
-	private static final long serialVersionUID = 3819529748816533170L;
+    private static final long serialVersionUID = 3819529748816533170L;
 
-	/**
-	 * 角色编码
-	 */
-	private String roleCode;
+    /**
+     * 角色编码
+     */
+    private String roleCode;
 
-	private String roleName;
+    private String roleName;
 
-	/**
-	 * 状态
-	 */
-	private String status;
+    /**
+     * 状态
+     */
+    private String status;
 
-	/**
-	 * 备注
-	 */
-	private String remark;
+    /**
+     * 备注
+     */
+    private String remark;
 }

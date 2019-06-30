@@ -39,26 +39,25 @@ import javax.annotation.Resource;
 @Api(value = "API - MdcAddressQueryFeignClient", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class MdcAddressQueryFeignClient extends BaseController implements MdcAddressQueryFeignApi {
 
-	@Resource
-	private MdcAddressService mdcAddressService;
+    @Resource
+    private MdcAddressService mdcAddressService;
 
-	/**
-	 * 根据ID获取地址信息.
-	 *
-	 * @param addressId the address id
-	 *
-	 * @return the by id
-	 */
-	@Override
-	@ApiOperation(httpMethod = "POST", value = "根据ID获取地址信息")
-	public Wrapper<AddressDTO> getById(@PathVariable("addressId") Long addressId) {
-		logger.info("根据ID获取地址信息 addressId={}", addressId);
-		AddressDTO addressDTO = null;
-		MdcAddress mdcAddress = mdcAddressService.selectByKey(addressId);
-		if (PublicUtil.isNotEmpty(mdcAddress)) {
-			addressDTO = new AddressDTO();
-			BeanUtils.copyProperties(mdcAddress, addressDTO);
-		}
-		return WrapMapper.ok(addressDTO);
-	}
+    /**
+     * 根据ID获取地址信息.
+     *
+     * @param addressId the address id
+     * @return the by id
+     */
+    @Override
+    @ApiOperation(httpMethod = "POST", value = "根据ID获取地址信息")
+    public Wrapper<AddressDTO> getById(@PathVariable("addressId") Long addressId) {
+        logger.info("根据ID获取地址信息 addressId={}", addressId);
+        AddressDTO addressDTO = null;
+        MdcAddress mdcAddress = mdcAddressService.selectByKey(addressId);
+        if (PublicUtil.isNotEmpty(mdcAddress)) {
+            addressDTO = new AddressDTO();
+            BeanUtils.copyProperties(mdcAddress, addressDTO);
+        }
+        return WrapMapper.ok(addressDTO);
+    }
 }

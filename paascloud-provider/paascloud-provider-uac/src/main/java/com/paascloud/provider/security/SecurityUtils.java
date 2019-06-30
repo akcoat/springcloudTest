@@ -22,46 +22,46 @@ import java.util.Set;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class SecurityUtils {
 
-	private static final String AUTH_LOGIN_AFTER_URL = "/user/loginAfter/*";
-	private static final String AUTH_LOGOUT_URL = "/user/logout";
+    private static final String AUTH_LOGIN_AFTER_URL = "/user/loginAfter/*";
+    private static final String AUTH_LOGOUT_URL = "/user/logout";
 
-	/**
-	 * Gets current login name.
-	 *
-	 * @return the current login name
-	 */
-	public static String getCurrentLoginName() {
+    /**
+     * Gets current login name.
+     *
+     * @return the current login name
+     */
+    public static String getCurrentLoginName() {
 
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-		if (principal instanceof UserDetails) {
+        if (principal instanceof UserDetails) {
 
-			return ((UserDetails) principal).getUsername();
+            return ((UserDetails) principal).getUsername();
 
-		}
+        }
 
-		if (principal instanceof Principal) {
+        if (principal instanceof Principal) {
 
-			return ((Principal) principal).getName();
+            return ((Principal) principal).getName();
 
-		}
+        }
 
-		return String.valueOf(principal);
+        return String.valueOf(principal);
 
-	}
+    }
 
-	public static Set<String> getCurrentAuthorityUrl() {
-		Set<String> path = Sets.newHashSet();
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-		for (final GrantedAuthority authority : authorities) {
-			String url = authority.getAuthority();
-			if (StringUtils.isNotEmpty(url)) {
-				path.add(url);
-			}
-		}
-		path.add(AUTH_LOGIN_AFTER_URL);
-		path.add(AUTH_LOGOUT_URL);
-		return path;
-	}
+    public static Set<String> getCurrentAuthorityUrl() {
+        Set<String> path = Sets.newHashSet();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+        for (final GrantedAuthority authority : authorities) {
+            String url = authority.getAuthority();
+            if (StringUtils.isNotEmpty(url)) {
+                path.add(url);
+            }
+        }
+        path.add(AUTH_LOGIN_AFTER_URL);
+        path.add(AUTH_LOGOUT_URL);
+        return path;
+    }
 }

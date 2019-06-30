@@ -37,49 +37,48 @@ import java.util.List;
 @Component
 @ElasticJobConfig(cron = "0 0/10 * * * ?", jobParameter = "fetchNum=1000")
 public class HandleWaitingConfirmMessageJob extends AbstractBaseDataflowJob<String> {
-	@Resource
-	private TpcMqMessageService tpcMqMessageService;
-	@Resource
-	private UacRpcService uacRpcService;
-	@Value("${paascloud.message.handleTimeout}")
-	private int timeOutMinute;
-	private static final String PID_UAC = "PID_UAC";
+    @Resource
+    private TpcMqMessageService tpcMqMessageService;
+    @Resource
+    private UacRpcService uacRpcService;
+    @Value("${paascloud.message.handleTimeout}")
+    private int timeOutMinute;
+    private static final String PID_UAC = "PID_UAC";
 
-	/**
-	 * Fetch job data list.
-	 *
-	 * @param jobParameter the job parameter
-	 *
-	 * @return the list
-	 */
-	@Override
-	protected List<String> fetchJobData(JobParameter jobParameter) {
-		MessageTaskQueryDto query = new MessageTaskQueryDto();
-		query.setCreateTimeBefore(DateUtil.getBeforeTime(timeOutMinute));
-		query.setMessageStatus(MqSendStatusEnum.WAIT_SEND.sendStatus());
-		query.setFetchNum(jobParameter.getFetchNum());
-		query.setShardingItem(jobParameter.getShardingItem());
-		query.setShardingTotalCount(jobParameter.getShardingTotalCount());
-		query.setTaskStatus(JobTaskStatusEnum.TASK_CREATE.status());
-		query.setProducerGroup(PID_UAC);
-		return tpcMqMessageService.queryWaitingConfirmMessageKeyList(query);
-	}
+    /**
+     * Fetch job data list.
+     *
+     * @param jobParameter the job parameter
+     * @return the list
+     */
+    @Override
+    protected List<String> fetchJobData(JobParameter jobParameter) {
+        MessageTaskQueryDto query = new MessageTaskQueryDto();
+        query.setCreateTimeBefore(DateUtil.getBeforeTime(timeOutMinute));
+        query.setMessageStatus(MqSendStatusEnum.WAIT_SEND.sendStatus());
+        query.setFetchNum(jobParameter.getFetchNum());
+        query.setShardingItem(jobParameter.getShardingItem());
+        query.setShardingTotalCount(jobParameter.getShardingTotalCount());
+        query.setTaskStatus(JobTaskStatusEnum.TASK_CREATE.status());
+        query.setProducerGroup(PID_UAC);
+        return tpcMqMessageService.queryWaitingConfirmMessageKeyList(query);
+    }
 
-	/**
-	 * Process job data.
-	 *
-	 * @param messageKeyList the message key list
-	 */
-	@Override
-	protected void processJobData(List<String> messageKeyList) {
-		if (messageKeyList == null) {
-			return;
-		}
-		List<String> resendMessageList = uacRpcService.queryWaitingConfirmMessageKeyList(messageKeyList);
-		if (resendMessageList == null) {
-			resendMessageList = Lists.newArrayList();
-		}
-		messageKeyList.removeAll(resendMessageList);
-		tpcMqMessageService.handleWaitingConfirmMessage(messageKeyList, resendMessageList);
-	}
+    /**
+     * Process job data.
+     *
+     * @param messageKeyList the message key list
+     */
+    @Override
+    protected void processJobData(List<String> messageKeyList) {
+        if (messageKeyList == null) {
+            return;
+        }
+        List<String> resendMessageList = uacRpcService.queryWaitingConfirmMessageKeyList(messageKeyList);
+        if (resendMessageList == null) {
+            resendMessageList = Lists.newArrayList();
+        }
+        messageKeyList.removeAll(resendMessageList);
+        tpcMqMessageService.handleWaitingConfirmMessage(messageKeyList, resendMessageList);
+    }
 }

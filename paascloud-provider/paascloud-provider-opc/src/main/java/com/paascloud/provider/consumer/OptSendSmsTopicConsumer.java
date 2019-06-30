@@ -30,30 +30,30 @@ import javax.annotation.Resource;
 @Service
 public class OptSendSmsTopicConsumer {
 
-	@Resource
-	private OptSmsService smsService;
+    @Resource
+    private OptSmsService smsService;
 
-	/**
-	 * Handler send sms topic.
-	 *
-	 * @param body      the body
-	 * @param topicName the topic name
-	 * @param tags      the tags
-	 * @param keys      the keys
-	 */
-	public void handlerSendSmsTopic(String body, String topicName, String tags, String keys) {
-		MqMessage.checkMessage(body, keys, topicName);
-		SendSmsRequest sendSmsRequest;
-		try {
-			sendSmsRequest = JacksonUtil.parseJson(body, SendSmsRequest.class);
-		} catch (Exception e) {
-			log.error("发送短信MQ出现异常={}", e.getMessage(), e);
-			throw new IllegalArgumentException("JSON转换异常", e);
-		}
-		String ipAddr = sendSmsRequest.getOutId();
-		if (StringUtils.isEmpty(ipAddr)) {
-			throw new IllegalArgumentException("outId不能为空");
-		}
-		smsService.sendSms(sendSmsRequest);
-	}
+    /**
+     * Handler send sms topic.
+     *
+     * @param body      the body
+     * @param topicName the topic name
+     * @param tags      the tags
+     * @param keys      the keys
+     */
+    public void handlerSendSmsTopic(String body, String topicName, String tags, String keys) {
+        MqMessage.checkMessage(body, keys, topicName);
+        SendSmsRequest sendSmsRequest;
+        try {
+            sendSmsRequest = JacksonUtil.parseJson(body, SendSmsRequest.class);
+        } catch (Exception e) {
+            log.error("发送短信MQ出现异常={}", e.getMessage(), e);
+            throw new IllegalArgumentException("JSON转换异常", e);
+        }
+        String ipAddr = sendSmsRequest.getOutId();
+        if (StringUtils.isEmpty(ipAddr)) {
+            throw new IllegalArgumentException("outId不能为空");
+        }
+        smsService.sendSms(sendSmsRequest);
+    }
 }

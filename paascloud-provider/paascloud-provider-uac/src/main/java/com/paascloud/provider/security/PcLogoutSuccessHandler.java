@@ -19,23 +19,22 @@ import java.io.IOException;
 @Slf4j
 public class PcLogoutSuccessHandler implements LogoutSuccessHandler {
 
-	private ObjectMapper objectMapper = new ObjectMapper();
+    private ObjectMapper objectMapper = new ObjectMapper();
 
-	/**
-	 * On logout success.
-	 *
-	 * @param request        the request
-	 * @param response       the response
-	 * @param authentication the authentication
-	 *
-	 * @throws IOException the io exception
-	 */
-	@Override
-	public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
-			throws IOException {
-		log.info("退出成功");
-		response.setContentType("application/json;charset=UTF-8");
-		response.getWriter().write(objectMapper.writeValueAsString(WrapMapper.ok("退出成功")));
-	}
+    /**
+     * On logout success.
+     *
+     * @param request        the request
+     * @param response       the response
+     * @param authentication the authentication
+     * @throws IOException the io exception
+     */
+    @Override
+    public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
+            throws IOException {
+        log.info("退出成功");
+        response.setContentType("application/json;charset=UTF-8");
+        response.getWriter().write(objectMapper.writeValueAsString(WrapMapper.ok("退出成功")));
+    }
 
 }

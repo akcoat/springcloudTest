@@ -37,21 +37,20 @@ import javax.annotation.Resource;
 @RequestMapping(value = "/exception", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 @Api(value = "Web - MdcExceptionMainController", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class MdcExceptionMainController extends BaseController {
-	@Resource
-	private MdcExceptionLogService mdcExceptionLogService;
+    @Resource
+    private MdcExceptionLogService mdcExceptionLogService;
 
-	/**
-	 * 异常日志列表.
-	 *
-	 * @param mdcExceptionQueryDto the mdc exception query dto
-	 *
-	 * @return the wrapper
-	 */
-	@PostMapping(value = "/queryListWithPage")
-	@ApiOperation(httpMethod = "POST", value = "查询日志列表")
-	public Wrapper queryLogListWithPage(@ApiParam(name = "mdcExceptionQueryDto", value = "异常查询条件") @RequestBody MdcExceptionQueryDto mdcExceptionQueryDto) {
-		logger.info("查询日志处理列表 mdcExceptionQueryDto={}", mdcExceptionQueryDto);
-		PageInfo pageInfo = mdcExceptionLogService.queryExceptionListWithPage(mdcExceptionQueryDto);
-		return WrapMapper.ok(pageInfo);
-	}
+    /**
+     * 异常日志列表.
+     *
+     * @param mdcExceptionQueryDto the mdc exception query dto
+     * @return the wrapper
+     */
+    @PostMapping(value = "/queryListWithPage")
+    @ApiOperation(httpMethod = "POST", value = "查询日志列表")
+    public Wrapper queryLogListWithPage(@ApiParam(name = "mdcExceptionQueryDto", value = "异常查询条件") @RequestBody MdcExceptionQueryDto mdcExceptionQueryDto) {
+        logger.info("查询日志处理列表 mdcExceptionQueryDto={}", mdcExceptionQueryDto);
+        PageInfo pageInfo = mdcExceptionLogService.queryExceptionListWithPage(mdcExceptionQueryDto);
+        return WrapMapper.ok(pageInfo);
+    }
 }

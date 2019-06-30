@@ -22,8 +22,8 @@ import java.io.Serializable;
  */
 @Data
 public class CheckRoleCodeDto implements Serializable {
-	private static final long serialVersionUID = 6369434659441735160L;
+    private static final long serialVersionUID = 6369434659441735160L;
 
-	private Long roleId;
-	private String roleCode;
+    private Long roleId;
+    private String roleCode;
 }

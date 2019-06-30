@@ -32,24 +32,23 @@ import javax.annotation.Resource;
 @Configuration
 public class AliyunSmsConfiguration {
 
-	@Resource
-	private PaascloudProperties paascloudProperties;
+    @Resource
+    private PaascloudProperties paascloudProperties;
 
-	/**
-	 * Acs client acs client.
-	 *
-	 * @return the acs client
-	 *
-	 * @throws ClientException the client exception
-	 */
-	@Bean
-	public IAcsClient acsClient() throws ClientException {
-		log.info("SMS Bean IAcsClient Start");
-		IClientProfile profile = DefaultProfile.getProfile(paascloudProperties.getAliyun().getSms().getRegionId(), paascloudProperties.getAliyun().getKey().getAccessKeyId(), paascloudProperties.getAliyun().getKey().getAccessKeySecret());
-		DefaultProfile.addEndpoint(paascloudProperties.getAliyun().getSms().getEndpointName(), paascloudProperties.getAliyun().getSms().getRegionId(), paascloudProperties.getAliyun().getSms().getProduct(), paascloudProperties.getAliyun().getSms().getDomain());
-		DefaultAcsClient defaultAcsClient = new DefaultAcsClient(profile);
-		log.info("加载SMS Bean IAcsClient OK");
-		return defaultAcsClient;
-	}
+    /**
+     * Acs client acs client.
+     *
+     * @return the acs client
+     * @throws ClientException the client exception
+     */
+    @Bean
+    public IAcsClient acsClient() throws ClientException {
+        log.info("SMS Bean IAcsClient Start");
+        IClientProfile profile = DefaultProfile.getProfile(paascloudProperties.getAliyun().getSms().getRegionId(), paascloudProperties.getAliyun().getKey().getAccessKeyId(), paascloudProperties.getAliyun().getKey().getAccessKeySecret());
+        DefaultProfile.addEndpoint(paascloudProperties.getAliyun().getSms().getEndpointName(), paascloudProperties.getAliyun().getSms().getRegionId(), paascloudProperties.getAliyun().getSms().getProduct(), paascloudProperties.getAliyun().getSms().getDomain());
+        DefaultAcsClient defaultAcsClient = new DefaultAcsClient(profile);
+        log.info("加载SMS Bean IAcsClient OK");
+        return defaultAcsClient;
+    }
 
 }

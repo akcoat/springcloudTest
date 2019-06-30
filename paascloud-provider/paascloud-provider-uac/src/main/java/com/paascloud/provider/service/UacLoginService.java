@@ -21,13 +21,12 @@ import com.paascloud.provider.model.dto.user.LoginRespDto;
  */
 public interface UacLoginService {
 
-	/**
-	 * Login after login resp dto.
-	 *
-	 * @param applicationId the application id
-	 *
-	 * @return the login resp dto
-	 */
-	LoginRespDto loginAfter(Long applicationId);
+    /**
+     * Login after login resp dto.
+     *
+     * @param applicationId the application id
+     * @return the login resp dto
+     */
+    LoginRespDto loginAfter(Long applicationId);
 
 }

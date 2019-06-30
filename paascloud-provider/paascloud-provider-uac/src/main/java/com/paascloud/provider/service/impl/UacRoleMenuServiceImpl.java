@@ -21,54 +21,54 @@ import java.util.Set;
 @Service
 @Transactional(rollbackFor = Exception.class)
 public class UacRoleMenuServiceImpl extends BaseService<UacRoleMenu> implements UacRoleMenuService {
-	@Resource
-	private UacRoleMenuMapper uacRoleMenuMapper;
+    @Resource
+    private UacRoleMenuMapper uacRoleMenuMapper;
 
-	@Override
-	public int delRoleMenuList(Set<UacRoleMenu> uacRoleMenus) {
-		int result = 0;
-		for (UacRoleMenu uacRoleMenu : uacRoleMenus) {
-			result += uacRoleMenuMapper.delete(uacRoleMenu);
-		}
-		return result;
-	}
+    @Override
+    public int delRoleMenuList(Set<UacRoleMenu> uacRoleMenus) {
+        int result = 0;
+        for (UacRoleMenu uacRoleMenu : uacRoleMenus) {
+            result += uacRoleMenuMapper.delete(uacRoleMenu);
+        }
+        return result;
+    }
 
-	@Override
-	public void deleteByRoleId(Long roleId) {
-		if (roleId == null) {
-			throw new UacBizException(ErrorCodeEnum.UAC10012001);
-		}
-		UacRoleMenu roleMenu = new UacRoleMenu();
-		roleMenu.setRoleId(roleId);
-		uacRoleMenuMapper.delete(roleMenu);
-	}
+    @Override
+    public void deleteByRoleId(Long roleId) {
+        if (roleId == null) {
+            throw new UacBizException(ErrorCodeEnum.UAC10012001);
+        }
+        UacRoleMenu roleMenu = new UacRoleMenu();
+        roleMenu.setRoleId(roleId);
+        uacRoleMenuMapper.delete(roleMenu);
+    }
 
-	@Override
-	@Transactional(readOnly = true, rollbackFor = Exception.class)
-	public List<UacRoleMenu> listByRoleId(Long roleId) {
-		if (roleId == null) {
-			throw new UacBizException(ErrorCodeEnum.UAC10012001);
-		}
-		UacRoleMenu roleMenu = new UacRoleMenu();
-		roleMenu.setRoleId(roleId);
-		return uacRoleMenuMapper.select(roleMenu);
-	}
+    @Override
+    @Transactional(readOnly = true, rollbackFor = Exception.class)
+    public List<UacRoleMenu> listByRoleId(Long roleId) {
+        if (roleId == null) {
+            throw new UacBizException(ErrorCodeEnum.UAC10012001);
+        }
+        UacRoleMenu roleMenu = new UacRoleMenu();
+        roleMenu.setRoleId(roleId);
+        return uacRoleMenuMapper.select(roleMenu);
+    }
 
-	@Override
-	public void insert(Long roleId, Set<Long> menuIdList) {
-		if (roleId == null) {
-			throw new UacBizException(ErrorCodeEnum.UAC10012001);
-		}
-		UacRoleMenu uacRoleMenu = new UacRoleMenu();
-		uacRoleMenu.setRoleId(roleId);
-		for (Long menuId : menuIdList) {
-			uacRoleMenu.setMenuId(menuId);
-			uacRoleMenuMapper.insertSelective(uacRoleMenu);
-		}
-	}
+    @Override
+    public void insert(Long roleId, Set<Long> menuIdList) {
+        if (roleId == null) {
+            throw new UacBizException(ErrorCodeEnum.UAC10012001);
+        }
+        UacRoleMenu uacRoleMenu = new UacRoleMenu();
+        uacRoleMenu.setRoleId(roleId);
+        for (Long menuId : menuIdList) {
+            uacRoleMenu.setMenuId(menuId);
+            uacRoleMenuMapper.insertSelective(uacRoleMenu);
+        }
+    }
 
-	@Override
-	public void deleteByRoleIdList(final List<Long> roleIdList) {
-		uacRoleMenuMapper.deleteByRoleIdList(roleIdList);
-	}
+    @Override
+    public void deleteByRoleIdList(final List<Long> roleIdList) {
+        uacRoleMenuMapper.deleteByRoleIdList(roleIdList);
+    }
 }

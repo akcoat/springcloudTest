@@ -24,16 +24,14 @@ import java.util.Map;
  */
 public interface UacFreeMarkerService {
 
-	/**
-	 * Gets template.
-	 *
-	 * @param map              the map
-	 * @param templateLocation the template location
-	 *
-	 * @return the template
-	 *
-	 * @throws IOException       the io exception
-	 * @throws TemplateException the template exception
-	 */
-	String getTemplate(Map<String, Object> map, String templateLocation) throws IOException, TemplateException;
+    /**
+     * Gets template.
+     *
+     * @param map              the map
+     * @param templateLocation the template location
+     * @return the template
+     * @throws IOException       the io exception
+     * @throws TemplateException the template exception
+     */
+    String getTemplate(Map<String, Object> map, String templateLocation) throws IOException, TemplateException;
 }

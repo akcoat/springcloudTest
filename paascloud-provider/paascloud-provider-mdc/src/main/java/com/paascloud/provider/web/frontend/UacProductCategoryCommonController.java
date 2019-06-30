@@ -39,33 +39,32 @@ import javax.annotation.Resource;
 @Api(value = "WEB - UacDictCommonController", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class UacProductCategoryCommonController extends BaseController {
 
-	@Resource
-	private MdcProductCategoryService mdcProductCategoryService;
+    @Resource
+    private MdcProductCategoryService mdcProductCategoryService;
 
-	/**
-	 * 检测数据分类名称是否已存在.
-	 *
-	 * @param categoryCheckNameDto the category check name dto
-	 *
-	 * @return the wrapper
-	 */
-	@PostMapping(value = "/checkCategoryName")
-	@ApiOperation(httpMethod = "POST", value = "检测数据分类名称是否已存在")
-	public Wrapper<Boolean> checkCategoryName(@RequestBody MdcCategoryCheckNameDto categoryCheckNameDto) {
-		logger.info("检测数据分类名称是否已存在 categoryCheckNameDto={}", categoryCheckNameDto);
+    /**
+     * 检测数据分类名称是否已存在.
+     *
+     * @param categoryCheckNameDto the category check name dto
+     * @return the wrapper
+     */
+    @PostMapping(value = "/checkCategoryName")
+    @ApiOperation(httpMethod = "POST", value = "检测数据分类名称是否已存在")
+    public Wrapper<Boolean> checkCategoryName(@RequestBody MdcCategoryCheckNameDto categoryCheckNameDto) {
+        logger.info("检测数据分类名称是否已存在 categoryCheckNameDto={}", categoryCheckNameDto);
 
-		Long id = categoryCheckNameDto.getCategoryId();
-		String categoryName = categoryCheckNameDto.getCategoryName();
+        Long id = categoryCheckNameDto.getCategoryId();
+        String categoryName = categoryCheckNameDto.getCategoryName();
 
-		Example example = new Example(MdcProductCategory.class);
-		Example.Criteria criteria = example.createCriteria();
+        Example example = new Example(MdcProductCategory.class);
+        Example.Criteria criteria = example.createCriteria();
 
-		if (id != null) {
-			criteria.andNotEqualTo("id", id);
-		}
-		criteria.andEqualTo("name", categoryName);
+        if (id != null) {
+            criteria.andNotEqualTo("id", id);
+        }
+        criteria.andEqualTo("name", categoryName);
 
-		int result = mdcProductCategoryService.selectCountByExample(example);
-		return WrapMapper.ok(result < 1);
-	}
+        int result = mdcProductCategoryService.selectCountByExample(example);
+        return WrapMapper.ok(result < 1);
+    }
 }

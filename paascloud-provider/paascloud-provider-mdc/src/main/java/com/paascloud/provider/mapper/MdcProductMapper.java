@@ -29,34 +29,31 @@ import java.util.List;
 @Mapper
 @Component
 public interface MdcProductMapper extends MyMapper<MdcProduct> {
-	/**
-	 * Select by name and category ids list.
-	 *
-	 * @param productName    the product name
-	 * @param categoryIdList the category id list
-	 * @param orderBy        the order by
-	 *
-	 * @return the list
-	 */
-	List<MdcProduct> selectByNameAndCategoryIds(@Param("productName") String productName,
-	                                            @Param("categoryIdList") List<Long> categoryIdList,
-	                                            @Param("orderBy") String orderBy);
+    /**
+     * Select by name and category ids list.
+     *
+     * @param productName    the product name
+     * @param categoryIdList the category id list
+     * @param orderBy        the order by
+     * @return the list
+     */
+    List<MdcProduct> selectByNameAndCategoryIds(@Param("productName") String productName,
+                                                @Param("categoryIdList") List<Long> categoryIdList,
+                                                @Param("orderBy") String orderBy);
 
-	/**
-	 * Update product stock by id int.
-	 *
-	 * @param productDto the product dto
-	 *
-	 * @return the int
-	 */
-	int updateProductStockById(ProductDto productDto);
+    /**
+     * Update product stock by id int.
+     *
+     * @param productDto the product dto
+     * @return the int
+     */
+    int updateProductStockById(ProductDto productDto);
 
-	/**
-	 * Query product list with page list.
-	 *
-	 * @param mdcProduct the mdc product
-	 *
-	 * @return the list
-	 */
-	List<ProductVo> queryProductListWithPage(MdcProduct mdcProduct);
+    /**
+     * Query product list with page list.
+     *
+     * @param mdcProduct the mdc product
+     * @return the list
+     */
+    List<ProductVo> queryProductListWithPage(MdcProduct mdcProduct);
 }

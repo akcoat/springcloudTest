@@ -36,14 +36,14 @@ import javax.annotation.Resource;
 @Api(value = "API - MallCartQueryFeignClient", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class MallCartQueryFeignClient extends BaseController implements OmcCartQueryFeignApi {
 
-	@Resource
-	private OmcCartService omcCartService;
+    @Resource
+    private OmcCartService omcCartService;
 
-	@Override
-	@ApiOperation(httpMethod = "POST", value = "获取购物车信息")
-	public Wrapper<CartVo> getCartVo(@RequestParam("userId") Long userId) {
-		logger.info("getCartVo - 获取购物车信息. userId={}", userId);
-		CartVo cartVo = omcCartService.getCarVo(userId);
-		return WrapMapper.wrap(Wrapper.SUCCESS_CODE, Wrapper.SUCCESS_MESSAGE, cartVo);
-	}
+    @Override
+    @ApiOperation(httpMethod = "POST", value = "获取购物车信息")
+    public Wrapper<CartVo> getCartVo(@RequestParam("userId") Long userId) {
+        logger.info("getCartVo - 获取购物车信息. userId={}", userId);
+        CartVo cartVo = omcCartService.getCarVo(userId);
+        return WrapMapper.wrap(Wrapper.SUCCESS_CODE, Wrapper.SUCCESS_MESSAGE, cartVo);
+    }
 }

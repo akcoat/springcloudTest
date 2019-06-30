@@ -32,67 +32,67 @@ import java.util.Set;
 @Data
 public class UserVo extends BaseVo {
 
-	private static final long serialVersionUID = -5489240986004922469L;
+    private static final long serialVersionUID = -5489240986004922469L;
 
-	/**
-	 * 登录名
-	 */
-	private String loginName;
+    /**
+     * 登录名
+     */
+    private String loginName;
 
-	/**
-	 * 工号
-	 */
-	private String userCode;
+    /**
+     * 工号
+     */
+    private String userCode;
 
-	/**
-	 * 姓名
-	 */
-	private String userName;
+    /**
+     * 姓名
+     */
+    private String userName;
 
-	/**
-	 * 手机号
-	 */
-	private String mobileNo;
+    /**
+     * 手机号
+     */
+    private String mobileNo;
 
-	/**
-	 * 状态
-	 */
-	private String status;
+    /**
+     * 状态
+     */
+    private String status;
 
-	/**
-	 * 用户来源
-	 */
-	private String userSource;
+    /**
+     * 用户来源
+     */
+    private String userSource;
 
-	/**
-	 * 操作员类型（1:超级管理员, 0:普通操作员）
-	 */
-	private String type;
+    /**
+     * 操作员类型（1:超级管理员, 0:普通操作员）
+     */
+    private String type;
 
-	/**
-	 * 最后登录IP地址
-	 */
-	private String lastLoginIp;
+    /**
+     * 最后登录IP地址
+     */
+    private String lastLoginIp;
 
-	/**
-	 * 最后登录时间
-	 */
-	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-	private Date lastLoginTime;
+    /**
+     * 最后登录时间
+     */
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date lastLoginTime;
 
-	/**
-	 * 组织名称
-	 */
-	private String groupName;
+    /**
+     * 组织名称
+     */
+    private String groupName;
 
-	/**
-	 * 用户角色信息
-	 */
-	private Set<UacRole> roles;
+    /**
+     * 用户角色信息
+     */
+    private Set<UacRole> roles;
 
-	/**
-	 * 用户拥有的菜单权限和按钮权限
-	 */
-	private List<MenuVo> authTree;
+    /**
+     * 用户拥有的菜单权限和按钮权限
+     */
+    private List<MenuVo> authTree;
 }
